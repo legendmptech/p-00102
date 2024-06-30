@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+  }
+}
+
+.custom-drop-down-link {
+  color: darkcyan;
+  text-decoration: underline;
+  padding: 0;
+  padding: 5px;
+}
+.custom-drop-down-link:hover,
+.custom-drop-down-link:focus {
+  color: brown;
+  background-color: white;
+}
+@layer base {
+  * {
+    @apply box-border relative z-0;
+  }
+  h1 {
+    @apply text-2xl font-bold;
+  }
+  h2 {
+    @apply text-xl font-semibold;
+  }
+  p {
+    @apply text-base font-light;
+  }
+  a {
+    @apply text-base font-light;
+  }
+}
