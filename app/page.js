@@ -1,9 +1,10 @@
 import Image from "next/image";
-import { LatexText } from "./components/Latex";
+import { LatexText } from "./components/LatexText";
+import Logo from "./components/Logo";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-base-200 flex flex-col w-full items-center">
+    <main className="min-h-screen flex flex-col w-full items-center">
       <div className="hero max-w-3xl align-middle mt-28">
         <div className="hero-content flex-col lg:flex-row-reverse">
           {/* <img src={"@/public/logo-version-1_webp.webp"} /> */}
@@ -15,9 +16,7 @@ export default function Home() {
             height={200}
           />
           <div>
-            <h1 className="text-5xl font-bold text-center">
-              "கற்க கசடறக் ..."
-            </h1>
+            <h1 className="text-5xl font-bold text-center">கற்க கசடறக ...</h1>
             <h1 className="pt-5 text-center">Welcome to Alphaa Math!</h1>
             <p className="py-6">
               At Alphaa Math, we are dedicated to helping students excel in
@@ -42,9 +41,21 @@ export default function Home() {
           </div>
         </div>
       </div>
-      {/* <div className="flex flex-col flex-wrap w-full h-full px-10 md:px-5">
-        <button className="btn btn-neutral">Neutral</button>
-      </div> */}
+      <div className="diff max-w-3xl my-10">
+        <div className="diff-item-1 h-20">
+          <div className="bg-black text-primary-content flex justify-center text-6xl font-black p-4 h-20">
+            <Logo />
+            LPHAA
+          </div>
+        </div>
+        <div className="diff-item-2">
+          <div className="bg-base-200 flex justify-center text-6xl font-black p-4 h-20">
+            <Logo />
+            LPHAA
+          </div>
+        </div>
+        <div className="diff-resizer"></div>
+      </div>
     </main>
   );
 }

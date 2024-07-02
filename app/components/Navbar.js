@@ -1,10 +1,11 @@
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
+import Logo from "./Logo";
 
 function Navbar(props) {
   return (
-    <nav className="w-full flex justify-center bg-base-100 border-b-2 fixed top-0 left-0 z-20 h-[70px]">
+    <nav className="w-full bg-base-200 flex justify-center border-b-2 fixed top-0 left-0 z-20 h-[70px]">
       <div className="navbar max-w-4xl w-full">
         <div className="navbar-start drawer flex">
           <input id="menu-sidebar" type="checkbox" className="drawer-toggle" />
@@ -37,49 +38,31 @@ function Navbar(props) {
             ></label>
             <ul className="menu p-3 w-80 min-h-full bg-base-100 text-base-content pt-20">
               {/* Sidebar content here */}
+              <Link
+                href={"/12th-standard"}
+                className="link bg-neutral text-base-200 p-2 no-underline"
+              >
+                12th Standard
+              </Link>
               <li>
-                <Link
-                  href={"/12th-standard"}
-                  className="bg-neutral text-gray-200 hover:bg-white hover:text-black"
-                >
-                  12th Standard
-                </Link>
-                <Link href={"/12th-standard"} className="custom-drop-down-link">
+                <Link href={"/12th-standard"} className="link">
                   Mathematics
                 </Link>
-                <Link href={"/12th-standard"} className="custom-drop-down-link">
-                  Biology
-                </Link>
-                <Link href={"/12th-standard"} className="custom-drop-down-link">
-                  Physics
-                </Link>
               </li>
+              <Link
+                href={"/12th-standard"}
+                className="link bg-neutral text-base-200 p-2 no-underline"
+              >
+                10th Standard
+              </Link>
               <li>
-                <Link
-                  href={"/10th-standard"}
-                  className="bg-neutral text-gray-200 hover:bg-white hover:text-black"
-                >
-                  10th Standard
-                </Link>
-                <Link href={"/12th-standard"} className="custom-drop-down-link">
-                  Tamil
-                </Link>
-                <Link href={"/12th-standard"} className="custom-drop-down-link">
-                  English
-                </Link>
-                <Link href={"/12th-standard"} className="custom-drop-down-link">
+                <Link href={"/12th-standard"} className="link">
                   Mathematics
                 </Link>
               </li>
             </ul>
           </div>
-          <Image
-            alt="logo"
-            src="/logo-version-1-webp.webp"
-            className="rounded-full shadow-2xl w-14 h-14 ml-3 md:ml-0"
-            width={64}
-            height={64}
-          />
+          <Logo />
         </div>
         <div className="navbar-center hidden md:flex">
           <ul className="menu menu-horizontal px-1">
