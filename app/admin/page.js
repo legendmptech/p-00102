@@ -9,23 +9,33 @@ function page(props) {
   const [loginPressed, setLoginPressed] = useState(false);
   const [toastText, setToastText] = useState("");
   const [text, setText] = useState("");
-  const [actionState, setActionState] = useState("ADD");
+  const [actionState, setActionState] = useState("");
   const [problemText, setProblemText] = useState("");
+
+  // DATABASE USED STATES
+
+  const [classes, setClasses] = useState([
+    { id: 1, className: "12th Standard" },
+    { id: 2, className: "11th Standard" },
+    { id: 3, className: "10th Standard" },
+  ]);
+  const [subjects, setSubjects] = useState([]);
+  const [chapters, setChapters] = useState([]);
+  const [excercises, setExcercises] = useState([
+    // { id: 1, excerciseName: "Excercise 1.1" },
+  ]);
+  const [problems, setProblems] = useState([]);
 
   const loginBtnClick = (e) => {
     e.preventDefault();
 
     const password = document.getElementById("loginTextInput").value;
-    setText(password);
     if (password === process.env.NEXT_PUBLIC_ADMIN_PASSWORD) {
       setAuthenticated(true);
-      setToastText("Login Success! ✅");
+      toastFunction("Login Success! ✅");
     } else {
-      setToastText("Invalid Credentials ❌");
+      toastFunction("Invalid Credentials ❌");
     }
-    setTimeout(() => {
-      setToastText("");
-    }, 5000);
   };
   const compileBtnClick = (e) => {
     e.preventDefault();
@@ -36,9 +46,21 @@ function page(props) {
     const finalText = qnText + ` <br/> ` + ansText;
     setProblemText(finalText);
   };
+  const toastFunction = (text) => {
+    setToastText(text);
+    setTimeout(() => setToastText(""), 5000);
+  };
+  const databaseQueryFunction = () => {
+    if (actionState === "ADD") {
+    }
+    if (actionState === "UPDATE") {
+    }
+    if (actionState === "DELETE") {
+    }
+  };
   return (
     <main className="min-h-screen mt-20 h-full flex justify-center items-center">
-      {authenticated !== true ? (
+      {authenticated === true ? (
         <main className="flex flex-col justify-center items-center gap-3 h-full max-h-screen">
           <p>ADMIN LOGIN</p>
           <form action="post" onSubmit={loginBtnClick}>
@@ -59,63 +81,120 @@ function page(props) {
           </form>
         </main>
       ) : (
-        <main className="w-full flex flex-col justify-center items-center gap-5 px-4 md:px-2">
+        <main className="w-full flex flex-col justify-center items-center gap-5 px-4 md:px-2 mb-60 md:mb-96">
           <h1>ADMIN PANEL</h1>
           <div className="w-full flex flex-col justify-center items-center gap-5 md:flex-row">
             <select className="select select-bordered w-full max-w-sm md:max-w-xs">
-              <option>12th Standard</option>
-              <option>11th Standard</option>
-              <option>10th Standard</option>
+              <option value={0}>Select Standard</option>
+              {classes?.map(({ id, className }) => (
+                <option value={id}>{className}</option>
+              ))}
             </select>
             <select className="select select-bordered w-full max-w-sm md:max-w-xs">
-              <option>Mathematics</option>
+              <option value={0}>Select Subject</option>
+              {subjects?.map(({ id, subjectName }) => (
+                <option value={id}>{subjectName}</option>
+              ))}
             </select>
           </div>
           <select className="select select-bordered w-full max-w-sm md:max-w-md">
-            <option>Chapter 1 Applications of Matrices and Determinants</option>
+            <option value={0}>Select Chapter</option>
+            {chapters?.map(({ id, chapterName }) => (
+              <option value={id}>{chapterName}</option>
+            ))}
           </select>
           <select className="select select-bordered w-full max-w-sm md:max-w-xs">
-            <option>Excercise 1.1</option>
+            <option value={0}>Select Exercise</option>
+            {excercises?.map(({ id, excerciseName }) => (
+              <option value={id}>{excerciseName}</option>
+            ))}
           </select>
-          <h3>Click Anyone of the following Action...</h3>
-          <div className="flex flex-row flex-wrap gap-3">
-            <button
-              className={`btn ${
-                actionState === "ADD" ? "" : "btn-outline"
-              } btn-neutral`}
+          {excercises.length !== 0 && (
+            <>
+              <h3>Click Anyone of the following Action...</h3>
+              <div className="join">
+                <input
+                  className="join-item btn"
+                  type="radio"
+                  name="options"
+                  onClick={() => setActionState("ADD")}
+                  aria-label="ADD"
+                  // checked
+                />
+                <input
+                  className="join-item btn"
+                  type="radio"
+                  onClick={() => setActionState("UPDATE")}
+                  name="options"
+                  aria-label="UPDATE"
+                />
+                <input
+                  className="join-item btn"
+                  type="radio"
+                  onClick={() => setActionState("DELETE")}
+                  name="options"
+                  aria-label="DELETE"
+                />
+              </div>
+            </>
+          )}
+          {/* EDITOR */}
+          {actionState !== "" && (
+            <div
+              className={`w-full ${
+                actionState == "DELETE" ? "md:w-1/2 md:justify-center" : ""
+              } flex flex-col md:flex-row border-2 border-gray-400 mb-5 max-w-7xl`}
             >
-              ADD
-            </button>
-            <button className="btn btn-outline btn-neutral">UPDATE</button>
-            <button className="btn btn-outline btn-neutral">DELETE</button>
-          </div>
-          <div className="w-full flex flex-col md:flex-row border-2 border-gray-400 mb-5 max-w-7xl">
-            <div className="w-full flex flex-col border-b-2 md:border-b-0 md:border-r-2 border-gray-400 p-3 gap-3">
-              <textarea
-                className="textarea textarea-bordered"
-                placeholder="Enter Question"
-                id="qnTextInput"
-              ></textarea>
-              <textarea
-                className="textarea textarea-bordered"
-                placeholder="Enter Answer"
-                id="ansTextInput"
-              ></textarea>
-              <button className="btn btn-primary" onClick={compileBtnClick}>
-                COMPILE
-              </button>
-            </div>
-            <div className="w-full p-3 pb-10">
-              <h3 className="bg-gray-700 p-2 text-gray-200 font-bold mb-2">
-                LATEX VIEW
-              </h3>
-              {problemText != "" ? (
-                <Latex>{problemText}</Latex>
-              ) : (
-                <p>No Text</p>
+              <div
+                className={`w-full flex flex-col border-b-2 md:border-b-0 md:border-r-2 border-gray-400 p-3 gap-3`}
+              >
+                {actionState !== "ADD" && (
+                  <select className="select select-bordered w-full">
+                    <option>
+                      Chapter 1 Applications of Matrices and Determinants
+                    </option>
+                  </select>
+                )}
+                <textarea
+                  className="textarea textarea-bordered"
+                  placeholder="Enter Question"
+                  id="qnTextInput"
+                ></textarea>
+                <textarea
+                  className="textarea textarea-bordered"
+                  placeholder="Enter Answer"
+                  id="ansTextInput"
+                ></textarea>
+                <button
+                  className={`btn btn-primary ${
+                    actionState === "DELETE" ? "btn-error" : ""
+                  }`}
+                  onClick={compileBtnClick}
+                >
+                  {actionState == "DELETE" ? "DELETE PROBLEM" : "COMPILE"}
+                </button>
+              </div>
+              {actionState !== "DELETE" && (
+                <div className="w-full p-3">
+                  <h3 className="bg-gray-700 p-2 text-gray-200 font-bold mb-2">
+                    LATEX VIEW
+                  </h3>
+                  {problemText != "" ? (
+                    <Latex>{problemText}</Latex>
+                  ) : (
+                    <p>No Text</p>
+                  )}
+                  <br />
+                  <br />
+                  {problemText != "" && (
+                    <button className="btn btn-success">
+                      {actionState === "UPDATE" ? "UPDATE" : "ADD"}
+                    </button>
+                  )}
+                </div>
               )}
             </div>
-          </div>
+          )}
         </main>
       )}
       <Toast

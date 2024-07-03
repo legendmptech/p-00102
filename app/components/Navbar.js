@@ -30,7 +30,7 @@ function Navbar(props) {
               </svg>
             </label>
           </div>
-          <div className="drawer-side z-40">
+          <nav className="drawer-side z-40">
             <label
               htmlFor="menu-sidebar"
               aria-label="close sidebar"
@@ -40,12 +40,12 @@ function Navbar(props) {
               {/* Sidebar content here */}
               <Link
                 href={"/12th-standard"}
-                className="link bg-neutral text-base-200 p-2 no-underline"
+                className="link link-hover bg-neutral text-base-200 p-2"
               >
                 12th Standard
               </Link>
               <li>
-                <Link href={"/12th-standard"} className="link">
+                <Link href={"/12th-standard"} className="link link-hover">
                   Mathematics
                 </Link>
               </li>
@@ -56,12 +56,12 @@ function Navbar(props) {
                 10th Standard
               </Link>
               <li>
-                <Link href={"/12th-standard"} className="link">
+                <Link href={"/12th-standard"} className="link link-hover">
                   Mathematics
                 </Link>
               </li>
             </ul>
-          </div>
+          </nav>
           <Logo />
         </div>
         <div className="navbar-center hidden md:flex">
