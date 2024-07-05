@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { LatexText } from "./components/LatexText";
 import Logo from "./components/Logo";
 
 export default function Home() {
@@ -7,7 +6,6 @@ export default function Home() {
     <main className="min-h-screen flex flex-col w-full items-center">
       <div className="hero max-w-3xl align-middle mt-28">
         <div className="hero-content flex-col lg:flex-row-reverse">
-          {/* <img src={"@/public/logo-version-1_webp.webp"} /> */}
           <Image
             alt="profile picture"
             src="/logo-version-1-webp.webp"

@@ -85,15 +85,23 @@ function page(props) {
           <h1>ADMIN PANEL</h1>
           <div className="w-full flex flex-col justify-center items-center gap-5 md:flex-row">
             <select className="select select-bordered w-full max-w-sm md:max-w-xs">
-              <option value={0}>Select Standard</option>
+              <option value={0} key={0}>
+                Select Standard
+              </option>
               {classes?.map(({ id, className }) => (
-                <option value={id}>{className}</option>
+                <option value={id} key={id}>
+                  {className}
+                </option>
               ))}
             </select>
             <select className="select select-bordered w-full max-w-sm md:max-w-xs">
-              <option value={0}>Select Subject</option>
+              <option value={0} key={0}>
+                Select Subject
+              </option>
               {subjects?.map(({ id, subjectName }) => (
-                <option value={id}>{subjectName}</option>
+                <option value={id} key={id}>
+                  {subjectName}
+                </option>
               ))}
             </select>
           </div>
@@ -104,9 +112,13 @@ function page(props) {
             ))}
           </select>
           <select className="select select-bordered w-full max-w-sm md:max-w-xs">
-            <option value={0}>Select Exercise</option>
+            <option value={0} key={0}>
+              Select Exercise
+            </option>
             {excercises?.map(({ id, excerciseName }) => (
-              <option value={id}>{excerciseName}</option>
+              <option value={id} key={id}>
+                {excerciseName}
+              </option>
             ))}
           </select>
           {excercises.length !== 0 && (
@@ -150,7 +162,7 @@ function page(props) {
               >
                 {actionState !== "ADD" && (
                   <select className="select select-bordered w-full">
-                    <option>
+                    <option key={0}>
                       Chapter 1 Applications of Matrices and Determinants
                     </option>
                   </select>

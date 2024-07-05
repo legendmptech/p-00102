@@ -72,28 +72,13 @@ function Navbar(props) {
                 <li>
                   <Link href={"/"}>Maths</Link>
                 </li>
-                <li>
-                  <Link href={"/"}>Biology</Link>
-                </li>
               </ul>
             </div>
             <div className="dropdown dropdown-hover">
               <summary className="btn m-1">10th Standard</summary>
               <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
                 <li>
-                  <Link href={"/"}>Tamil</Link>
-                </li>
-                <li>
-                  <Link href={"/"}>English</Link>
-                </li>
-                <li>
                   <Link href={"/"}>Maths</Link>
-                </li>
-                <li>
-                  <Link href={"/"}>Science</Link>
-                </li>
-                <li>
-                  <Link href={"/"}>Social Science</Link>
                 </li>
               </ul>
             </div>

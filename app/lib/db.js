@@ -17,3 +17,6 @@ export async function mysqlQuery({ query, values = [] }) {
     return { error };
   }
 }
+export async function getAllClasses() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/class`);
+}
