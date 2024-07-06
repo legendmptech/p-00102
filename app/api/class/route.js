@@ -8,7 +8,7 @@ export async function GET(req, res) {
   });
   return NextResponse.json(
     {
-      problems: classes,
+      classes: classes,
       message: "Successfully retrieved Classes...",
       statusText: "SUCCESS",
     },

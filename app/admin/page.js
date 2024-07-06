@@ -1,8 +1,9 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Toast from "../components/Toast";
 import "katex/dist/katex.min.css";
 import Latex from "react-latex-next";
+import { getAllClasses } from "../lib/db";
 
 function page(props) {
   const [authenticated, setAuthenticated] = useState(false);
@@ -21,10 +22,13 @@ function page(props) {
   ]);
   const [subjects, setSubjects] = useState([]);
   const [chapters, setChapters] = useState([]);
-  const [excercises, setExcercises] = useState([
-    // { id: 1, excerciseName: "Excercise 1.1" },
-  ]);
+  const [excercises, setExcercises] = useState([]);
   const [problems, setProblems] = useState([]);
+
+  // useEffect(() => {
+  //   const classes = getAllClasses();
+  //   setClasses(classes);
+  // }, []);
 
   const loginBtnClick = (e) => {
     e.preventDefault();
@@ -84,7 +88,13 @@ function page(props) {
         <main className="w-full flex flex-col justify-center items-center gap-5 px-4 md:px-2 mb-60 md:mb-96">
           <h1>ADMIN PANEL</h1>
           <div className="w-full flex flex-col justify-center items-center gap-5 md:flex-row">
-            <select className="select select-bordered w-full max-w-sm md:max-w-xs">
+            <select
+              className="select select-bordered w-full max-w-sm md:max-w-xs"
+              id="classDropDown"
+              onChange={() =>
+                toastFunction(document.getElementById("classDropDown").value)
+              }
+            >
               <option value={0} key={0}>
                 Select Standard
               </option>
@@ -94,7 +104,10 @@ function page(props) {
                 </option>
               ))}
             </select>
-            <select className="select select-bordered w-full max-w-sm md:max-w-xs">
+            <select
+              className="select select-bordered w-full max-w-sm md:max-w-xs"
+              id="subjectDropDown"
+            >
               <option value={0} key={0}>
                 Select Subject
               </option>
@@ -105,13 +118,19 @@ function page(props) {
               ))}
             </select>
           </div>
-          <select className="select select-bordered w-full max-w-sm md:max-w-md">
+          <select
+            className="select select-bordered w-full max-w-sm md:max-w-md"
+            id="chapterDropDown"
+          >
             <option value={0}>Select Chapter</option>
             {chapters?.map(({ id, chapterName }) => (
               <option value={id}>{chapterName}</option>
             ))}
           </select>
-          <select className="select select-bordered w-full max-w-sm md:max-w-xs">
+          <select
+            className="select select-bordered w-full max-w-sm md:max-w-xs"
+            id="exerciseDropDown"
+          >
             <option value={0} key={0}>
               Select Exercise
             </option>
