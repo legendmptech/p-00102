@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Logo from "./components/Logo";
+import WhatsappBtn from "./components/Buttons/WhatsappBtn";
+import YoutubeBtn from "./components/Buttons/YoutubeBtn";
 
 export default function Home() {
   return (
@@ -53,6 +55,11 @@ export default function Home() {
           </div>
         </div>
         <div className="diff-resizer"></div>
+      </div>
+      <div className="flex flex-col px-5 md:flex-row gap-3 justify-center items-center m-5">
+        <h1>Alphaa Network</h1>
+        <WhatsappBtn />
+        <YoutubeBtn />
       </div>
     </main>
   );

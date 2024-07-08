@@ -6,7 +6,7 @@ export async function GET(req, res) {
   const id = URLSearchParams.get("id");
 
   const problems = await mysqlQuery({
-    query: `SELECT * FROM Problems WHERE ProblemID = ?;`,
+    query: `SELECT * FROM Problems WHERE ProblemID = ? LIMIT 1;`,
     values: [id],
   });
 

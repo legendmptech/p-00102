@@ -47,17 +47,16 @@ use alphaa_math;
 --        ('Chapter 4 Inverse Trigonometric Functions',1);
 
 -- INSERT INTO Exercises (ExerciseName, ChapterID)
--- VALUES ('Excercise 1.1', 1),
---        ('Excercise 1.2', 1),
---        ('Excercise 1.3', 1);
+-- VALUES ('Chapter 1 Applications of Matrices and Determinants Excercise 1.1', 1),
+--        ('Chapter 1 Applications of Matrices and Determinants Excercise 1.2', 1),
+--        ('Chapter 1 Applications of Matrices and Determinants Excercise 1.3', 1);
 
 -- INSERT INTO Problems (QuestionText, AnswerText, ExerciseID)
 -- VALUES ('Solve for x: 2x + 3 = 9', 'x = 3', 1),
 --        ('State Newton''s First Law of Motion.', 'An object at rest stays at rest and an object in motion stays in motion with the same speed and in the same direction unless acted upon by an unbalanced force.', 1),
---        ('What is the basic principle of genetics according to Mendel?', 'Principle of Segregation: alleles segregate randomly during gamete formation and each gamete receives one allele.', 1);
+--        ('What is the basic principle of genetics according to Mendel?', 'Principle of Segregation: alleles segregate randomly during gamete formation and each gamete receives one allele.', 1);       
 --        
-       
-SELECT * FROM Classes;
+-- SELECT * FROM Classes;
 SELECT * FROM Subjects;
 SELECT * FROM Chapters;
 SELECT * FROM Exercises;

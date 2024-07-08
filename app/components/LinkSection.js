@@ -4,11 +4,11 @@ import React from "react";
 function LinkSection(props) {
   return (
     <div className="pt-5">
-      <h4>{props?.sectionTitle}</h4>
+      <h3>{props?.sectionTitle}</h3>
       <ul className="py-5 px-2">
         {props?.data.map(({ link, text }, index) => (
           <li className="mb-2" key={index}>
-            <Link href={link} className="link link-primary link-hover">
+            <Link href={`?ex=1`} className="link link-primary link-hover">
               {text}
             </Link>
           </li>

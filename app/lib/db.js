@@ -25,7 +25,7 @@ export async function getAllClasses() {
   });
   const classes = await res.json();
   if (classes.statusText === "SUCCESS") {
-    return classes;
+    return classes?.classes;
   } else {
     return [];
   }
@@ -39,27 +39,79 @@ export async function getAllSubjectsByClassId(classId) {
       },
     }
   );
-  return await res.json();
+  const subjects = await res.json();
+  if (subjects.statusText === "SUCCESS") {
+    return subjects?.subjects;
+  } else {
+    return [];
+  }
 }
-export async function getAllExercisesBySubjectId(subjectid) {
+export async function getAllChaptersBySubjectId(subjectid) {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_URL}/api/exercise?subjectid=${subjectid}`,
+    `${process.env.NEXT_PUBLIC_URL}/api/chapter?subjectid=${subjectid}`,
     {
       next: {
         revalidate: 3600,
       },
     }
   );
-  return await res.json();
+  const chapters = await res.json();
+  if (chapters.statusText === "SUCCESS") {
+    return chapters?.chapters;
+  } else {
+    return [];
+  }
+}
+export async function getAllExercisesByChapterId(chapterid) {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_URL}/api/exercise?chapterid=${chapterid}`,
+    {
+      next: {
+        revalidate: 3600,
+      },
+    }
+  );
+  const exercises = await res.json();
+  if (exercises.statusText === "SUCCESS") {
+    return exercises?.exercises;
+  } else {
+    return [];
+  }
 }
 export async function getAllProblemsByExerciseId(exerciseid) {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_URL}/api/problem?exerciseid=${exerciseid}`,
+    `${process.env.NEXT_PUBLIC_URL}/api/problems?ex=${exerciseid}`,
     {
       next: {
-        revalidate: 3600,
+        revalidate: 0,
       },
     }
   );
-  return await res.json();
+  const data = await res.json();
+
+  if (data.statusText == "SUCCESS") {
+    return data;
+  } else {
+    return {
+      problems: [],
+      exercise: "",
+    };
+  }
+}
+export async function getProblemById(id) {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_URL}/api/problem?id=${id}`,
+    {
+      next: {
+        revalidate: 0,
+      },
+    }
+  );
+  const data = await res.json();
+
+  if (data.statusText == "SUCCESS") {
+    return data?.problem;
+  } else {
+    return {};
+  }
 }

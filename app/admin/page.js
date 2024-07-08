@@ -3,7 +3,15 @@ import React, { useEffect, useState } from "react";
 import Toast from "../components/Toast";
 import "katex/dist/katex.min.css";
 import Latex from "react-latex-next";
-import { getAllClasses } from "../lib/db";
+import {
+  getAllChaptersBySubjectId,
+  getAllClasses,
+  getAllExercisesByChapterId,
+  getAllProblemsByExerciseId,
+  getAllSubjectsByClassId,
+  getProblemById,
+} from "../lib/db";
+import LatexToolBar from "../components/Latex/LatexToolBar";
 
 function page(props) {
   const [authenticated, setAuthenticated] = useState(false);
@@ -15,20 +23,25 @@ function page(props) {
 
   // DATABASE USED STATES
 
-  const [classes, setClasses] = useState([
-    { id: 1, className: "12th Standard" },
-    { id: 2, className: "11th Standard" },
-    { id: 3, className: "10th Standard" },
-  ]);
+  const [classes, setClasses] = useState([]);
   const [subjects, setSubjects] = useState([]);
   const [chapters, setChapters] = useState([]);
-  const [excercises, setExcercises] = useState([]);
+  const [exercises, setExercises] = useState([]);
   const [problems, setProblems] = useState([]);
+  const [problem, setProblem] = useState({});
 
-  // useEffect(() => {
-  //   const classes = getAllClasses();
-  //   setClasses(classes);
-  // }, []);
+  // UI USED STATES
+  const [focusedTextInput, setFocusedTextInput] = useState(null);
+
+  useEffect(() => {
+    const fetchClasses = async () => {
+      const result = await getAllClasses();
+      console.log("Hello", result);
+      setClasses(result);
+    };
+
+    fetchClasses();
+  }, []);
 
   const loginBtnClick = (e) => {
     e.preventDefault();
@@ -91,29 +104,50 @@ function page(props) {
             <select
               className="select select-bordered w-full max-w-sm md:max-w-xs"
               id="classDropDown"
-              onChange={() =>
-                toastFunction(document.getElementById("classDropDown").value)
-              }
+              onChange={async () => {
+                const classid = document.getElementById("classDropDown").value;
+                toastFunction(classid);
+
+                const fetchSubjects = async () => {
+                  const result = await getAllSubjectsByClassId(classid);
+                  console.log("Hello", result);
+                  setSubjects(result);
+                };
+                await fetchSubjects();
+              }}
             >
               <option value={0} key={0}>
                 Select Standard
               </option>
-              {classes?.map(({ id, className }) => (
-                <option value={id} key={id}>
-                  {className}
+              {classes?.map(({ ClassID, ClassName }) => (
+                <option value={ClassID} key={ClassID}>
+                  {ClassName}
                 </option>
               ))}
             </select>
             <select
               className="select select-bordered w-full max-w-sm md:max-w-xs"
               id="subjectDropDown"
+              onChange={async () => {
+                const subjectid =
+                  document.getElementById("subjectDropDown").value;
+                toastFunction(subjectid);
+
+                const fetchChapters = async () => {
+                  const result = await getAllChaptersBySubjectId(subjectid);
+                  console.log("chapters", result);
+                  setChapters(result);
+                };
+
+                await fetchChapters();
+              }}
             >
               <option value={0} key={0}>
                 Select Subject
               </option>
-              {subjects?.map(({ id, subjectName }) => (
-                <option value={id} key={id}>
-                  {subjectName}
+              {subjects?.map(({ SubjectID, SubjectName }) => (
+                <option value={SubjectID} key={SubjectID}>
+                  {SubjectName}
                 </option>
               ))}
             </select>
@@ -121,26 +155,57 @@ function page(props) {
           <select
             className="select select-bordered w-full max-w-sm md:max-w-md"
             id="chapterDropDown"
+            onChange={async () => {
+              const exerciseid =
+                document.getElementById("chapterDropDown").value;
+              toastFunction(exerciseid);
+
+              const fetchExercises = async () => {
+                const result = await getAllExercisesByChapterId(exerciseid);
+                console.log("exercises", result);
+                setExercises(result);
+              };
+
+              await fetchExercises();
+            }}
           >
             <option value={0}>Select Chapter</option>
-            {chapters?.map(({ id, chapterName }) => (
-              <option value={id}>{chapterName}</option>
+            {chapters?.map(({ ChapterID, ChapterName }) => (
+              <option value={ChapterID} key={ChapterID}>
+                {ChapterName}
+              </option>
             ))}
           </select>
           <select
-            className="select select-bordered w-full max-w-sm md:max-w-xs"
+            className="select select-bordered w-full max-w-sm md:max-w-md"
             id="exerciseDropDown"
+            onChange={async () => {
+              const exerciseid =
+                document.getElementById("exerciseDropDown").value;
+              toastFunction(exerciseid);
+              const fetchProblems = async () => {
+                const result = await getAllProblemsByExerciseId(exerciseid);
+                console.log("problems", result);
+                setProblems(result?.problems);
+              };
+
+              if (exerciseid != 0) {
+                setActionState("ADD");
+              }
+              await fetchProblems();
+            }}
           >
             <option value={0} key={0}>
               Select Exercise
             </option>
-            {excercises?.map(({ id, excerciseName }) => (
-              <option value={id} key={id}>
-                {excerciseName}
+            {exercises?.map(({ ExerciseID, ExerciseName }) => (
+              <option value={ExerciseID} key={ExerciseID}>
+                {ExerciseName}
               </option>
             ))}
           </select>
-          {excercises.length !== 0 && (
+          {/* ACTION BUTTON */}
+          {actionState !== "" && (
             <>
               <h3>Click Anyone of the following Action...</h3>
               <div className="join">
@@ -150,7 +215,7 @@ function page(props) {
                   name="options"
                   onClick={() => setActionState("ADD")}
                   aria-label="ADD"
-                  // checked
+                  defaultChecked
                 />
                 <input
                   className="join-item btn"
@@ -170,7 +235,7 @@ function page(props) {
             </>
           )}
           {/* EDITOR */}
-          {actionState !== "" && (
+          {actionState == "" && (
             <div
               className={`w-full ${
                 actionState == "DELETE" ? "md:w-1/2 md:justify-center" : ""
@@ -180,21 +245,49 @@ function page(props) {
                 className={`w-full flex flex-col border-b-2 md:border-b-0 md:border-r-2 border-gray-400 p-3 gap-3`}
               >
                 {actionState !== "ADD" && (
-                  <select className="select select-bordered w-full">
-                    <option key={0}>
-                      Chapter 1 Applications of Matrices and Determinants
-                    </option>
+                  <select
+                    className="select select-bordered w-full"
+                    id="problemDropDown"
+                    onChange={async () => {
+                      const problemid =
+                        document.getElementById("problemDropDown").value;
+                      toastFunction(problemid);
+
+                      const fetchProblem = async () => {
+                        const result = await getProblemById(problemid);
+                        const qnTextInput =
+                          document.getElementById("qnTextInput");
+                        const ansTextInput =
+                          document.getElementById("ansTextInput");
+                        qnTextInput.value = result?.QuestionText;
+                        ansTextInput.value = result?.AnswerText;
+                      };
+
+                      await fetchProblem();
+                    }}
+                  >
+                    <option value={0}>Select Problems</option>
+                    {problems?.map(
+                      ({ ProblemID, QuestionText, AnswerText }) => (
+                        <option value={ProblemID} key={ProblemID}>
+                          {QuestionText}
+                        </option>
+                      )
+                    )}
                   </select>
                 )}
                 <textarea
                   className="textarea textarea-bordered"
                   placeholder="Enter Question"
                   id="qnTextInput"
+                  onFocus={() => setFocusedTextInput("qnTextInput")}
                 ></textarea>
+                <LatexToolBar focusedTextInput={focusedTextInput} />
                 <textarea
                   className="textarea textarea-bordered"
                   placeholder="Enter Answer"
                   id="ansTextInput"
+                  onFocus={() => setFocusedTextInput("ansTextInput")}
                 ></textarea>
                 <button
                   className={`btn btn-primary ${

@@ -9,6 +9,10 @@ export async function GET(req, res) {
     query: `SELECT * FROM Problems WHERE ExerciseID = ?;`,
     values: [ExerciseID],
   });
+  const exercise = await mysqlQuery({
+    query: `SELECT * FROM Exercises WHERE ExerciseID = ? LIMIT 1;`,
+    values: [ExerciseID],
+  });
 
   if (problems.length == 0) {
     return NextResponse.json(
@@ -22,6 +26,7 @@ export async function GET(req, res) {
   return NextResponse.json(
     {
       problems: problems,
+      exercise: exercise[0],
       message: "Successfully retrieved Problems...",
       statusText: "SUCCESS",
     },

@@ -9,6 +9,7 @@ function Logo(props) {
       className="rounded-full shadow-2xl w-14 h-14 ml-3 md:ml-0"
       width={64}
       height={64}
+      priority
     />
   );
 }
