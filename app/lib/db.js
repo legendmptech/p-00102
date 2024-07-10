@@ -17,6 +17,62 @@ export async function mysqlQuery({ query, values = [] }) {
     return { error };
   }
 }
+export async function postNewProblem(data) {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/problem`, {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!res.ok) {
+      throw new Error("Response status : ", res.status);
+    }
+    const json = await res.json();
+    return json;
+  } catch (error) {
+    throw new Error("Could not create a problem...");
+  }
+}
+export async function updateProblemById(data) {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/problem`, {
+      method: "PUT",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!res.ok) {
+      throw new Error("Response status : ", res.status);
+    }
+    const json = await res.json();
+    return json;
+  } catch (error) {
+    throw new Error("Could not Update problem...");
+  }
+}
+export async function deleteProblemById(id) {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_URL}/api/problem?problemid=${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    if (!res.ok) {
+      throw new Error("Response status : ", res.status);
+    }
+    const json = await res.json();
+    return json;
+  } catch (error) {
+    throw new Error("Could not DELETE problem...");
+  }
+}
 export async function getAllClasses() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/class`, {
     next: {

@@ -4,12 +4,15 @@ import Toast from "../components/Toast";
 import "katex/dist/katex.min.css";
 import Latex from "react-latex-next";
 import {
+  deleteProblemById,
   getAllChaptersBySubjectId,
   getAllClasses,
   getAllExercisesByChapterId,
   getAllProblemsByExerciseId,
   getAllSubjectsByClassId,
   getProblemById,
+  postNewProblem,
+  updateProblemById,
 } from "../lib/db";
 import LatexToolBar from "../components/Latex/LatexToolBar";
 
@@ -28,10 +31,9 @@ function page(props) {
   const [chapters, setChapters] = useState([]);
   const [exercises, setExercises] = useState([]);
   const [problems, setProblems] = useState([]);
-  const [problem, setProblem] = useState({});
-
+  const [screenLoading, setScreenLoading] = useState(false);
   // UI USED STATES
-  const [focusedTextInput, setFocusedTextInput] = useState(null);
+  const [focusedTextInput, setFocusedTextInput] = useState("qnTextInput");
 
   useEffect(() => {
     const fetchClasses = async () => {
@@ -46,40 +48,107 @@ function page(props) {
   const loginBtnClick = (e) => {
     e.preventDefault();
 
-    const password = document.getElementById("loginTextInput").value;
+    const password = document.getElementById("loginTextInput")?.value;
     if (password === process.env.NEXT_PUBLIC_ADMIN_PASSWORD) {
       setAuthenticated(true);
       toastFunction("Login Success! ✅");
+      document.getElementById("admintext").focus();
     } else {
       toastFunction("Invalid Credentials ❌");
     }
   };
+
+  const fetchProblems = async () => {
+    const exerciseid = document.getElementById("exerciseDropDown")?.value;
+    toastFunction(exerciseid);
+    const result = await getAllProblemsByExerciseId(exerciseid);
+    console.log("problems", result);
+    setProblems(result?.problems);
+    if (exerciseid != 0) {
+      setActionState("ADD");
+    }
+  };
   const compileBtnClick = (e) => {
     e.preventDefault();
+    setScreenLoading(true);
+    const qnText = document.getElementById("qnTextInput")?.value;
+    const ansText = document.getElementById("ansTextInput")?.value;
 
-    const qnText = document.getElementById("qnTextInput").value;
-    const ansText = document.getElementById("ansTextInput").value;
-
-    const finalText = qnText + ` <br/> ` + ansText;
+    const finalText = `${qnText}` + ` <br/><br/> ` + `${ansText}`;
     setProblemText(finalText);
+    setScreenLoading(false);
   };
   const toastFunction = (text) => {
     setToastText(text);
     setTimeout(() => setToastText(""), 5000);
   };
-  const databaseQueryFunction = () => {
+  const databaseQueryFunction = async () => {
+    const QuestionTextInput = document.getElementById("qnTextInput");
+    const AnswerTextInput = document.getElementById("ansTextInput");
+    const ExerciseDropDown = document.getElementById("exerciseDropDown");
+    const ProblemDropDown = document.getElementById("problemDropDown");
+
+    setScreenLoading(true);
     if (actionState === "ADD") {
+      if (ExerciseDropDown.value === 0) return;
+      await postNewProblem({
+        QuestionText: QuestionTextInput?.value,
+        AnswerText: AnswerTextInput?.value,
+        ExerciseID: ExerciseDropDown?.value,
+      })
+        .then((data) => {
+          QuestionTextInput.value = ``;
+          AnswerTextInput.value = ``;
+          toastFunction(
+            `New Problem is Create & Added in the Exercise of ID ${ExerciseDropDown?.value}`
+          );
+          setScreenLoading(false);
+        })
+        .catch((err) => {
+          setScreenLoading(false);
+          toastFunction("Couldn't create problem");
+        });
     }
     if (actionState === "UPDATE") {
+      if (ProblemDropDown.value === 0) return;
+      await updateProblemById({
+        QuestionText: QuestionTextInput?.value,
+        AnswerText: AnswerTextInput?.value,
+        ProblemID: ProblemDropDown?.value,
+      })
+        .then((data) => {
+          QuestionTextInput.value = ``;
+          AnswerTextInput.value = ``;
+          toastFunction(`Updated problem of ID => ${ProblemDropDown?.value}`);
+          setScreenLoading(false);
+        })
+        .catch((err) => {
+          setScreenLoading(false);
+          toastFunction("Couldn't Update the problem");
+        });
     }
     if (actionState === "DELETE") {
+      if (ProblemDropDown.value === 0) {
+        return;
+      }
+      await deleteProblemById(ProblemDropDown?.value)
+        .then((data) => {
+          toastFunction(
+            `Problem of ID => ${ProblemDropDown?.value} is Deleted`
+          );
+          setScreenLoading(false);
+        })
+        .catch((err) => {
+          setScreenLoading(false);
+          toastFunction("Couldn't Delete problem");
+        });
     }
   };
   return (
     <main className="min-h-screen mt-20 h-full flex justify-center items-center">
-      {authenticated === true ? (
+      {authenticated !== true ? (
         <main className="flex flex-col justify-center items-center gap-3 h-full max-h-screen">
-          <p>ADMIN LOGIN</p>
+          <p id="admintext">ADMIN LOGIN</p>
           <form action="post" onSubmit={loginBtnClick}>
             <input
               type="password"
@@ -92,7 +161,11 @@ function page(props) {
               className={`btn btn-neutral max-w-xs mt-5 ${
                 loginPressed ? "btn-disabled" : ""
               }`}
+              disabled={screenLoading ? true : false}
             >
+              <span
+                className={screenLoading ? "loading loading-spinner" : ""}
+              ></span>
               LOGIN
             </button>
           </form>
@@ -104,8 +177,9 @@ function page(props) {
             <select
               className="select select-bordered w-full max-w-sm md:max-w-xs"
               id="classDropDown"
+              defaultValue={0}
               onChange={async () => {
-                const classid = document.getElementById("classDropDown").value;
+                const classid = document.getElementById("classDropDown")?.value;
                 toastFunction(classid);
 
                 const fetchSubjects = async () => {
@@ -128,9 +202,10 @@ function page(props) {
             <select
               className="select select-bordered w-full max-w-sm md:max-w-xs"
               id="subjectDropDown"
+              defaultValue={0}
               onChange={async () => {
                 const subjectid =
-                  document.getElementById("subjectDropDown").value;
+                  document.getElementById("subjectDropDown")?.value;
                 toastFunction(subjectid);
 
                 const fetchChapters = async () => {
@@ -155,9 +230,10 @@ function page(props) {
           <select
             className="select select-bordered w-full max-w-sm md:max-w-md"
             id="chapterDropDown"
+            defaultValue={0}
             onChange={async () => {
               const exerciseid =
-                document.getElementById("chapterDropDown").value;
+                document.getElementById("chapterDropDown")?.value;
               toastFunction(exerciseid);
 
               const fetchExercises = async () => {
@@ -179,19 +255,8 @@ function page(props) {
           <select
             className="select select-bordered w-full max-w-sm md:max-w-md"
             id="exerciseDropDown"
+            defaultValue={0}
             onChange={async () => {
-              const exerciseid =
-                document.getElementById("exerciseDropDown").value;
-              toastFunction(exerciseid);
-              const fetchProblems = async () => {
-                const result = await getAllProblemsByExerciseId(exerciseid);
-                console.log("problems", result);
-                setProblems(result?.problems);
-              };
-
-              if (exerciseid != 0) {
-                setActionState("ADD");
-              }
               await fetchProblems();
             }}
           >
@@ -235,7 +300,7 @@ function page(props) {
             </>
           )}
           {/* EDITOR */}
-          {actionState == "" && (
+          {actionState !== "" && (
             <div
               className={`w-full ${
                 actionState == "DELETE" ? "md:w-1/2 md:justify-center" : ""
@@ -248,9 +313,10 @@ function page(props) {
                   <select
                     className="select select-bordered w-full"
                     id="problemDropDown"
+                    defaultValue={0}
                     onChange={async () => {
                       const problemid =
-                        document.getElementById("problemDropDown").value;
+                        document.getElementById("problemDropDown")?.value;
                       toastFunction(problemid);
 
                       const fetchProblem = async () => {
@@ -259,6 +325,9 @@ function page(props) {
                           document.getElementById("qnTextInput");
                         const ansTextInput =
                           document.getElementById("ansTextInput");
+                        if (actionState == "DELETE") {
+                          return;
+                        }
                         qnTextInput.value = result?.QuestionText;
                         ansTextInput.value = result?.AnswerText;
                       };
@@ -276,25 +345,39 @@ function page(props) {
                     )}
                   </select>
                 )}
-                <textarea
-                  className="textarea textarea-bordered"
-                  placeholder="Enter Question"
-                  id="qnTextInput"
-                  onFocus={() => setFocusedTextInput("qnTextInput")}
-                ></textarea>
-                <LatexToolBar focusedTextInput={focusedTextInput} />
-                <textarea
-                  className="textarea textarea-bordered"
-                  placeholder="Enter Answer"
-                  id="ansTextInput"
-                  onFocus={() => setFocusedTextInput("ansTextInput")}
-                ></textarea>
+                {actionState != "DELETE" && (
+                  <>
+                    <textarea
+                      className="textarea textarea-bordered"
+                      placeholder="Enter Question"
+                      id="qnTextInput"
+                      onFocus={() => setFocusedTextInput("qnTextInput")}
+                    ></textarea>
+                    <LatexToolBar focusedTextInput={focusedTextInput} />
+                    <textarea
+                      className="textarea textarea-bordered"
+                      placeholder="Enter Answer"
+                      id="ansTextInput"
+                      onFocus={() => setFocusedTextInput("ansTextInput")}
+                    ></textarea>
+                  </>
+                )}
                 <button
                   className={`btn btn-primary ${
                     actionState === "DELETE" ? "btn-error" : ""
                   }`}
-                  onClick={compileBtnClick}
+                  disabled={screenLoading ? true : false}
+                  onClick={
+                    actionState == "DELETE"
+                      ? databaseQueryFunction
+                      : compileBtnClick
+                  }
                 >
+                  {screenLoading && (
+                    <span
+                      className={screenLoading ? "loading loading-spinner" : ""}
+                    ></span>
+                  )}
                   {actionState == "DELETE" ? "DELETE PROBLEM" : "COMPILE"}
                 </button>
               </div>
@@ -311,7 +394,18 @@ function page(props) {
                   <br />
                   <br />
                   {problemText != "" && (
-                    <button className="btn btn-success">
+                    <button
+                      className="btn btn-success"
+                      disabled={screenLoading ? true : false}
+                      onClick={databaseQueryFunction}
+                    >
+                      {screenLoading && (
+                        <span
+                          className={
+                            screenLoading ? "loading loading-spinner" : ""
+                          }
+                        ></span>
+                      )}
                       {actionState === "UPDATE" ? "UPDATE" : "ADD"}
                     </button>
                   )}

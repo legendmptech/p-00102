@@ -50,13 +50,24 @@ function Navbar(props) {
                 </Link>
               </li>
               <Link
-                href={"/12th-standard"}
+                href={"/11th-standard"}
+                className="link bg-neutral text-base-200 p-2 no-underline"
+              >
+                11th Standard
+              </Link>
+              <li>
+                <Link href={"/11th-standard"} className="link link-hover">
+                  Mathematics
+                </Link>
+              </li>
+              <Link
+                href={"/10th-standard"}
                 className="link bg-neutral text-base-200 p-2 no-underline"
               >
                 10th Standard
               </Link>
               <li>
-                <Link href={"/12th-standard"} className="link link-hover">
+                <Link href={"/10th-standard"} className="link link-hover">
                   Mathematics
                 </Link>
               </li>
@@ -70,7 +81,15 @@ function Navbar(props) {
               <summary className="btn m-1">12th Standard</summary>
               <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
                 <li>
-                  <Link href={"/"}>Maths</Link>
+                  <Link href={"/12th-standard"}>Maths</Link>
+                </li>
+              </ul>
+            </div>
+            <div className="dropdown dropdown-hover">
+              <summary className="btn m-1">11th Standard</summary>
+              <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                <li>
+                  <Link href={"/11th-standard"}>Maths</Link>
                 </li>
               </ul>
             </div>
@@ -78,7 +97,7 @@ function Navbar(props) {
               <summary className="btn m-1">10th Standard</summary>
               <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
                 <li>
-                  <Link href={"/"}>Maths</Link>
+                  <Link href={"/10th-standard"}>Maths</Link>
                 </li>
               </ul>
             </div>

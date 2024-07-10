@@ -16,7 +16,7 @@ export default function Home() {
             height={200}
           />
           <div>
-            <h1 className="text-5xl font-bold text-center">கற்க கசடறக ...</h1>
+            <h1 className="text-5xl font-bold text-center">கற்க கசடற ...</h1>
             <h1 className="pt-5 text-center">Welcome to Alphaa Math!</h1>
             <p className="py-6">
               At Alphaa Math, we are dedicated to helping students excel in

@@ -1,398 +1,434 @@
 export const i2th_maths = {
-  chapter_1: [
-    {
-      link: "/",
-      text: "Chapter 1 Applications of Matrices and Determinants Exercise 1.1",
-    },
-    {
-      link: "/",
-      text: "Chapter 1 Applications of Matrices and Determinants Exercise 1.2",
-    },
-    {
-      link: "/",
-      text: "Chapter 1 Applications of Matrices and Determinants Exercise 1.2",
-    },
-    {
-      link: "/",
-      text: "Chapter 1 Applications of Matrices and Determinants Exercise 1.4",
-    },
-    {
-      link: "/",
-      text: "Chapter 1 Applications of Matrices and Determinants Exercise 1.5",
-    },
-    {
-      link: "/",
-      text: "Chapter 1 Applications of Matrices and Determinants Exercise 1.6",
-    },
-    {
-      link: "/",
-      text: "Chapter 1 Applications of Matrices and Determinants Exercise 1.7",
-    },
-    {
-      link: "/",
-      text: "Chapter 1 Applications of Matrices and Determinants Exercise 1.8",
-    },
+  chapters_list: [
+    "chapter_1",
+    "chapter_2",
+    "chapter_3",
+    "chapter_4",
+    "chapter_5",
+    "chapter_6",
+    "chapter_7",
+    "chapter_8",
+    "chapter_9",
+    "chapter_10",
+    "chapter_11",
+    "chapter_12",
   ],
-  chapter_2: [
-    {
-      link: "/",
-      text: "Chapter 2 Complex Numbers Exercise 2.1",
-    },
-    {
-      link: "/",
-      text: "Chapter 2 Complex Numbers Exercise 2.2",
-    },
-    {
-      link: "/",
-      text: "Chapter 2 Complex Numbers Exercise 2.3",
-    },
-    {
-      link: "/",
-      text: "Chapter 2 Complex Numbers Exercise 2.4",
-    },
-    {
-      link: "/",
-      text: "Chapter 2 Complex Numbers Exercise 2.5",
-    },
-    {
-      link: "/",
-      text: "Chapter 2 Complex Numbers Exercise 2.6",
-    },
-    {
-      link: "/",
-      text: "Chapter 2 Complex Numbers Exercise 2.7",
-    },
-    {
-      link: "/",
-      text: "Chapter 2 Complex Numbers Exercise 2.8",
-    },
-    {
-      link: "/",
-      text: "Chapter 2 Complex Numbers Exercise 2.9",
-    },
+  chapter_1: {
+    name: "Chapter 1 Applications of Matrices and Determinants",
+    exercises: [
+      { ExerciseID: 1, ExerciseName: "Exercise 1.1" },
+      { ExerciseID: 1, ExerciseName: "Exercise 1.2" },
+      { ExerciseID: 1, ExerciseName: "Exercise 1.3" },
+      { ExerciseID: 1, ExerciseName: "Exercise 1.4" },
+      { ExerciseID: 1, ExerciseName: "Exercise 1.5" },
+      { ExerciseID: 1, ExerciseName: "Exercise 1.6" },
+      { ExerciseID: 1, ExerciseName: "Exercise 1.7" },
+      { ExerciseID: 1, ExerciseName: "Exercise 1.8" },
+    ],
+  },
+  chapter_2: {
+    name: "Chapter 2 Complex Numbers",
+    exercises: [
+      { ExerciseID: 1, ExerciseName: "Exercise 2.1" },
+      { ExerciseID: 1, ExerciseName: "Exercise 2.2" },
+      { ExerciseID: 1, ExerciseName: "Exercise 2.3" },
+      { ExerciseID: 1, ExerciseName: "Exercise 2.4" },
+      { ExerciseID: 1, ExerciseName: "Exercise 2.5" },
+      { ExerciseID: 1, ExerciseName: "Exercise 2.6" },
+      { ExerciseID: 1, ExerciseName: "Exercise 2.7" },
+      { ExerciseID: 1, ExerciseName: "Exercise 2.8" },
+      { ExerciseID: 1, ExerciseName: "Exercise 2.9" },
+    ],
+  },
+  chapter_3: {
+    name: "Chapter 3 Theory of Equations",
+    exercises: [
+      { ExerciseID: 1, ExerciseName: "Exercise 3.1" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.2" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.3" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.4" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.5" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.6" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.7" },
+    ],
+  },
+  chapter_4: {
+    name: "Chapter 4 Inverse Trigonometric Functions",
+    exercises: [
+      { ExerciseID: 1, ExerciseName: "Exercise 4.1" },
+      { ExerciseID: 1, ExerciseName: "Exercise 4.2" },
+      { ExerciseID: 1, ExerciseName: "Exercise 4.3" },
+      { ExerciseID: 1, ExerciseName: "Exercise 4.4" },
+      { ExerciseID: 1, ExerciseName: "Exercise 4.5" },
+      { ExerciseID: 1, ExerciseName: "Exercise 4.6" },
+    ],
+  },
+  chapter_5: {
+    name: "Chapter 5 Two Dimensional Analytical Geometry",
+    exercises: [
+      { ExerciseID: 1, ExerciseName: "Exercise 5.1" },
+      { ExerciseID: 1, ExerciseName: "Exercise 5.2" },
+      { ExerciseID: 1, ExerciseName: "Exercise 5.3" },
+      { ExerciseID: 1, ExerciseName: "Exercise 5.4" },
+      { ExerciseID: 1, ExerciseName: "Exercise 5.5" },
+      { ExerciseID: 1, ExerciseName: "Exercise 5.6" },
+    ],
+  },
+  chapter_6: {
+    name: "Chapter 6 Applications of Vector Algebra",
+    exercises: [
+      { ExerciseID: 1, ExerciseName: "Exercise 6.1" },
+      { ExerciseID: 1, ExerciseName: "Exercise 6.2" },
+      { ExerciseID: 1, ExerciseName: "Exercise 6.3" },
+      { ExerciseID: 1, ExerciseName: "Exercise 6.4" },
+      { ExerciseID: 1, ExerciseName: "Exercise 6.5" },
+      { ExerciseID: 1, ExerciseName: "Exercise 6.6" },
+      { ExerciseID: 1, ExerciseName: "Exercise 6.7" },
+      { ExerciseID: 1, ExerciseName: "Exercise 6.8" },
+      { ExerciseID: 1, ExerciseName: "Exercise 6.9" },
+      { ExerciseID: 1, ExerciseName: "Exercise 6.10" },
+    ],
+  },
+  chapter_7: {
+    name: "Chapter 7 Applications of Differential Calculus",
+    exercises: [
+      { ExerciseID: 1, ExerciseName: "Exercise 7.1" },
+      { ExerciseID: 1, ExerciseName: "Exercise 7.2" },
+      { ExerciseID: 1, ExerciseName: "Exercise 7.3" },
+      { ExerciseID: 1, ExerciseName: "Exercise 7.4" },
+      { ExerciseID: 1, ExerciseName: "Exercise 7.5" },
+      { ExerciseID: 1, ExerciseName: "Exercise 7.6" },
+      { ExerciseID: 1, ExerciseName: "Exercise 7.7" },
+      { ExerciseID: 1, ExerciseName: "Exercise 7.8" },
+      { ExerciseID: 1, ExerciseName: "Exercise 7.9" },
+      { ExerciseID: 1, ExerciseName: "Exercise 7.10" },
+    ],
+  },
+  chapter_8: {
+    name: "Chapter 8 Differentials and Partial Derivatives",
+    exercises: [
+      { ExerciseID: 1, ExerciseName: "Exercise 8.1" },
+      { ExerciseID: 1, ExerciseName: "Exercise 8.2" },
+      { ExerciseID: 1, ExerciseName: "Exercise 8.3" },
+      { ExerciseID: 1, ExerciseName: "Exercise 8.4" },
+      { ExerciseID: 1, ExerciseName: "Exercise 8.5" },
+      { ExerciseID: 1, ExerciseName: "Exercise 8.6" },
+      { ExerciseID: 1, ExerciseName: "Exercise 8.7" },
+      { ExerciseID: 1, ExerciseName: "Exercise 8.8" },
+      { ExerciseID: 1, ExerciseName: "Exercise 8.9" },
+      { ExerciseID: 1, ExerciseName: "Exercise 8.10" },
+    ],
+  },
+  chapter_9: {
+    name: "Chapter 9 Applications of Integration",
+    exercises: [
+      { ExerciseID: 1, ExerciseName: "Exercise 9.1" },
+      { ExerciseID: 1, ExerciseName: "Exercise 9.2" },
+      { ExerciseID: 1, ExerciseName: "Exercise 9.3" },
+      { ExerciseID: 1, ExerciseName: "Exercise 9.4" },
+      { ExerciseID: 1, ExerciseName: "Exercise 9.5" },
+      { ExerciseID: 1, ExerciseName: "Exercise 9.6" },
+      { ExerciseID: 1, ExerciseName: "Exercise 9.7" },
+      { ExerciseID: 1, ExerciseName: "Exercise 9.8" },
+      { ExerciseID: 1, ExerciseName: "Exercise 9.9" },
+    ],
+  },
+  chapter_10: {
+    name: "Chapter 10 Ordinary Differential Equations",
+    exercises: [
+      { ExerciseID: 1, ExerciseName: "Exercise 10.1" },
+      { ExerciseID: 1, ExerciseName: "Exercise 10.2" },
+      { ExerciseID: 1, ExerciseName: "Exercise 10.3" },
+      { ExerciseID: 1, ExerciseName: "Exercise 10.4" },
+      { ExerciseID: 1, ExerciseName: "Exercise 10.5" },
+      { ExerciseID: 1, ExerciseName: "Exercise 10.6" },
+      { ExerciseID: 1, ExerciseName: "Exercise 10.7" },
+      { ExerciseID: 1, ExerciseName: "Exercise 10.8" },
+      { ExerciseID: 1, ExerciseName: "Exercise 10.9" },
+    ],
+  },
+  chapter_11: {
+    name: "Chapter 11 Probability Distributions",
+    exercises: [
+      { ExerciseID: 1, ExerciseName: "Exercise 11.1" },
+      { ExerciseID: 1, ExerciseName: "Exercise 11.2" },
+      { ExerciseID: 1, ExerciseName: "Exercise 11.3" },
+      { ExerciseID: 1, ExerciseName: "Exercise 11.4" },
+      { ExerciseID: 1, ExerciseName: "Exercise 11.5" },
+      { ExerciseID: 1, ExerciseName: "Exercise 11.6" },
+    ],
+  },
+  chapter_12: {
+    name: "Chapter 12 Discrete Mathematics",
+    exercises: [
+      { ExerciseID: 1, ExerciseName: "Exercise 12.1" },
+      { ExerciseID: 1, ExerciseName: "Exercise 12.2" },
+      { ExerciseID: 1, ExerciseName: "Exercise 12.3" },
+    ],
+  },
+};
+export const i1th_maths = {
+  chapters_list: [
+    "chapter_1",
+    "chapter_2",
+    "chapter_3",
+    "chapter_4",
+    "chapter_5",
+    "chapter_6",
+    "chapter_7",
+    "chapter_8",
+    "chapter_9",
+    "chapter_10",
+    "chapter_11",
+    "chapter_12",
   ],
-  chapter_3: [
-    {
-      link: "/",
-      text: "Chapter 3 Theory of Equations Exercise 3.1",
-    },
-    {
-      link: "/",
-      text: "Chapter 3 Theory of Equations Exercise 3.2",
-    },
-    {
-      link: "/",
-      text: "Chapter 3 Theory of Equations Exercise 3.3",
-    },
-    {
-      link: "/",
-      text: "Chapter 3 Theory of Equations Exercise 3.4",
-    },
-    {
-      link: "/",
-      text: "Chapter 3 Theory of Equations Exercise 3.5",
-    },
-    {
-      link: "/",
-      text: "Chapter 3 Theory of Equations Exercise 3.6",
-    },
-    {
-      link: "/",
-      text: "Chapter 3 Theory of Equations Exercise 3.7",
-    },
+  chapter_1: {
+    name: "Chapter 1 Sets, Relations and Functions",
+    exercises: [
+      { ExerciseID: 1, ExerciseName: "Exercise 1.1" },
+      { ExerciseID: 1, ExerciseName: "Exercise 1.2" },
+      { ExerciseID: 1, ExerciseName: "Exercise 1.3" },
+      { ExerciseID: 1, ExerciseName: "Exercise 1.4" },
+      { ExerciseID: 1, ExerciseName: "Exercise 1.5" },
+    ],
+  },
+  chapter_2: {
+    name: "Chapter 2 Basic Algebra",
+    exercises: [
+      { ExerciseID: 1, ExerciseName: "Exercise 2.1" },
+      { ExerciseID: 1, ExerciseName: "Exercise 2.2" },
+      { ExerciseID: 1, ExerciseName: "Exercise 2.3" },
+      { ExerciseID: 1, ExerciseName: "Exercise 2.4" },
+      { ExerciseID: 1, ExerciseName: "Exercise 2.5" },
+      { ExerciseID: 1, ExerciseName: "Exercise 2.6" },
+      { ExerciseID: 1, ExerciseName: "Exercise 2.7" },
+      { ExerciseID: 1, ExerciseName: "Exercise 2.8" },
+      { ExerciseID: 1, ExerciseName: "Exercise 2.9" },
+      { ExerciseID: 1, ExerciseName: "Exercise 2.10" },
+      { ExerciseID: 1, ExerciseName: "Exercise 2.11" },
+      { ExerciseID: 1, ExerciseName: "Exercise 2.12" },
+      { ExerciseID: 1, ExerciseName: "Exercise 2.13" },
+    ],
+  },
+  chapter_3: {
+    name: "Chapter 3 Trigonometry",
+    exercises: [
+      { ExerciseID: 1, ExerciseName: "Exercise 3.1" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.2" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.3" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.4" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.5" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.6" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.7" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.8" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.9" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.10" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.11" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.12" },
+    ],
+  },
+  chapter_4: {
+    name: "Chapter 4 Combinatorics and Mathematical Induction",
+    exercises: [
+      { ExerciseID: 1, ExerciseName: "Exercise 4.1" },
+      { ExerciseID: 1, ExerciseName: "Exercise 4.2" },
+      { ExerciseID: 1, ExerciseName: "Exercise 4.3" },
+      { ExerciseID: 1, ExerciseName: "Exercise 4.4" },
+      { ExerciseID: 1, ExerciseName: "Exercise 4.5" },
+    ],
+  },
+  chapter_5: {
+    name: "Chapter 5 Binomial Theorem, Sequences and Series",
+    exercises: [
+      { ExerciseID: 1, ExerciseName: "Exercise 5.1" },
+      { ExerciseID: 1, ExerciseName: "Exercise 5.2" },
+      { ExerciseID: 1, ExerciseName: "Exercise 5.3" },
+      { ExerciseID: 1, ExerciseName: "Exercise 5.4" },
+      { ExerciseID: 1, ExerciseName: "Exercise 5.5" },
+    ],
+  },
+  chapter_6: {
+    name: "Chapter 6 Two Dimensional Analytical Geometry",
+    exercises: [
+      { ExerciseID: 1, ExerciseName: "Exercise 6.1" },
+      { ExerciseID: 1, ExerciseName: "Exercise 6.2" },
+      { ExerciseID: 1, ExerciseName: "Exercise 6.3" },
+      { ExerciseID: 1, ExerciseName: "Exercise 6.4" },
+      { ExerciseID: 1, ExerciseName: "Exercise 6.5" },
+    ],
+  },
+  chapter_7: {
+    name: "Chapter 7 Matrices and Determinants",
+    exercises: [
+      { ExerciseID: 1, ExerciseName: "Exercise 7.1" },
+      { ExerciseID: 1, ExerciseName: "Exercise 7.2" },
+      { ExerciseID: 1, ExerciseName: "Exercise 7.3" },
+      { ExerciseID: 1, ExerciseName: "Exercise 7.4" },
+      { ExerciseID: 1, ExerciseName: "Exercise 7.5" },
+    ],
+  },
+  chapter_8: {
+    name: "Chapter 8 Vector Algebra",
+    exercises: [
+      { ExerciseID: 1, ExerciseName: "Exercise 8.1" },
+      { ExerciseID: 1, ExerciseName: "Exercise 8.2" },
+      { ExerciseID: 1, ExerciseName: "Exercise 8.3" },
+      { ExerciseID: 1, ExerciseName: "Exercise 8.4" },
+      { ExerciseID: 1, ExerciseName: "Exercise 8.5" },
+    ],
+  },
+  chapter_9: {
+    name: "Chapter 9 Differential Calculus - Limits and Continuity",
+    exercises: [
+      { ExerciseID: 1, ExerciseName: "Exercise 9.1" },
+      { ExerciseID: 1, ExerciseName: "Exercise 9.2" },
+      { ExerciseID: 1, ExerciseName: "Exercise 9.3" },
+      { ExerciseID: 1, ExerciseName: "Exercise 9.4" },
+      { ExerciseID: 1, ExerciseName: "Exercise 9.5" },
+      { ExerciseID: 1, ExerciseName: "Exercise 9.6" },
+    ],
+  },
+  chapter_10: {
+    name: "Chapter 9 Differential Calculus - Limits and Continuity",
+    exercises: [
+      { ExerciseID: 1, ExerciseName: "Exercise 10.1" },
+      { ExerciseID: 1, ExerciseName: "Exercise 10.2" },
+      { ExerciseID: 1, ExerciseName: "Exercise 10.3" },
+      { ExerciseID: 1, ExerciseName: "Exercise 10.4" },
+      { ExerciseID: 1, ExerciseName: "Exercise 10.5" },
+    ],
+  },
+  chapter_11: {
+    name: "Chapter 11 Integral Calculus",
+    exercises: [
+      { ExerciseID: 1, ExerciseName: "Exercise 11.1" },
+      { ExerciseID: 1, ExerciseName: "Exercise 11.2" },
+      { ExerciseID: 1, ExerciseName: "Exercise 11.3" },
+      { ExerciseID: 1, ExerciseName: "Exercise 11.4" },
+      { ExerciseID: 1, ExerciseName: "Exercise 11.5" },
+    ],
+  },
+  chapter_12: {
+    name: "Chapter 12 Introduction to Probability Theory",
+    exercises: [
+      { ExerciseID: 1, ExerciseName: "Exercise 12.1" },
+      { ExerciseID: 1, ExerciseName: "Exercise 12.2" },
+      { ExerciseID: 1, ExerciseName: "Exercise 12.3" },
+      { ExerciseID: 1, ExerciseName: "Exercise 12.4" },
+      { ExerciseID: 1, ExerciseName: "Exercise 12.5" },
+    ],
+  },
+};
+export const i0th_maths = {
+  chapters_list: [
+    "chapter_1",
+    "chapter_2",
+    "chapter_3",
+    "chapter_4",
+    "chapter_5",
+    "chapter_6",
+    "chapter_7",
+    "chapter_8",
   ],
-  chapter_4: [
-    {
-      link: "/",
-      text: "Chapter 4 Inverse Trigonometric Functions Exercise 4.1",
-    },
-    {
-      link: "/",
-      text: "Chapter 4 Inverse Trigonometric Functions Exercise 4.2",
-    },
-    {
-      link: "/",
-      text: "Chapter 4 Inverse Trigonometric Functions Exercise 4.3",
-    },
-    {
-      link: "/",
-      text: "Chapter 4 Inverse Trigonometric Functions Exercise 4.4",
-    },
-    {
-      link: "/",
-      text: "Chapter 4 Inverse Trigonometric Functions Exercise 4.5",
-    },
-    {
-      link: "/",
-      text: "Chapter 4 Inverse Trigonometric Functions Exercise 4.6",
-    },
-  ],
-  chapter_5: [
-    {
-      link: "/",
-      text: "Chapter 5 Two Dimensional Analytical Geometry – II Exercise 5.1",
-    },
-    {
-      link: "/",
-      text: "Chapter 5 Two Dimensional Analytical Geometry – II Exercise 5.2",
-    },
-    {
-      link: "/",
-      text: "Chapter 5 Two Dimensional Analytical Geometry – II Exercise 5.3",
-    },
-    {
-      link: "/",
-      text: "Chapter 5 Two Dimensional Analytical Geometry – II Exercise 5.4",
-    },
-    {
-      link: "/",
-      text: "Chapter 5 Two Dimensional Analytical Geometry – II Exercise 5.5",
-    },
-    {
-      link: "/",
-      text: "Chapter 5 Two Dimensional Analytical Geometry – II Exercise 5.6",
-    },
-  ],
-  chapter_6: [
-    {
-      link: "/",
-      text: "Chapter 6 Applications of Vector Algebra Exercise 6.1",
-    },
-    {
-      link: "/",
-      text: "Chapter 6 Applications of Vector Algebra Exercise 6.2",
-    },
-    {
-      link: "/",
-      text: "Chapter 6 Applications of Vector Algebra Exercise 6.3",
-    },
-    {
-      link: "/",
-      text: "Chapter 6 Applications of Vector Algebra Exercise 6.4",
-    },
-    {
-      link: "/",
-      text: "Chapter 6 Applications of Vector Algebra Exercise 6.5",
-    },
-    {
-      link: "/",
-      text: "Chapter 6 Applications of Vector Algebra Exercise 6.6",
-    },
-    {
-      link: "/",
-      text: "Chapter 6 Applications of Vector Algebra Exercise 6.7",
-    },
-    {
-      link: "/",
-      text: "Chapter 6 Applications of Vector Algebra Exercise 6.8",
-    },
-    {
-      link: "/",
-      text: "Chapter 6 Applications of Vector Algebra Exercise 6.9",
-    },
-    {
-      link: "/",
-      text: "Chapter 6 Applications of Vector Algebra Exercise 6.10",
-    },
-  ],
-  chapter_7: [
-    {
-      link: "/",
-      text: "Chapter 7 Applications of Differential Calculus Exercise 7.1",
-    },
-    {
-      link: "/",
-      text: "Chapter 7 Applications of Differential Calculus Exercise 7.2",
-    },
-    {
-      link: "/",
-      text: "Chapter 7 Applications of Differential Calculus Exercise 7.3",
-    },
-    {
-      link: "/",
-      text: "Chapter 7 Applications of Differential Calculus Exercise 7.4",
-    },
-    {
-      link: "/",
-      text: "Chapter 7 Applications of Differential Calculus Exercise 7.5",
-    },
-    {
-      link: "/",
-      text: "Chapter 7 Applications of Differential Calculus Exercise 7.6",
-    },
-    {
-      link: "/",
-      text: "Chapter 7 Applications of Differential Calculus Exercise 7.7",
-    },
-    {
-      link: "/",
-      text: "Chapter 7 Applications of Differential Calculus Exercise 7.8",
-    },
-    {
-      link: "/",
-      text: "Chapter 7 Applications of Differential Calculus Exercise 7.9",
-    },
-    {
-      link: "/",
-      text: "Chapter 7 Applications of Differential Calculus Exercise 7.10",
-    },
-  ],
-  chapter_8: [
-    {
-      link: "/",
-      text: "Chapter 8 Differentials and Partial Derivatives Exercise 8.1",
-    },
-    {
-      link: "/",
-      text: "Chapter 8 Differentials and Partial Derivatives Exercise 8.1",
-    },
-    {
-      link: "/",
-      text: "Chapter 8 Differentials and Partial Derivatives Exercise 8.2",
-    },
-    {
-      link: "/",
-      text: "Chapter 8 Differentials and Partial Derivatives Exercise 8.3",
-    },
-    {
-      link: "/",
-      text: "Chapter 8 Differentials and Partial Derivatives Exercise 8.4",
-    },
-    {
-      link: "/",
-      text: "Chapter 8 Differentials and Partial Derivatives Exercise 8.5",
-    },
-    {
-      link: "/",
-      text: "Chapter 8 Differentials and Partial Derivatives Exercise 8.6",
-    },
-    {
-      link: "/",
-      text: "Chapter 8 Differentials and Partial Derivatives Exercise 8.7",
-    },
-    {
-      link: "/",
-      text: "Chapter 8 Differentials and Partial Derivatives Exercise 8.8",
-    },
-  ],
-  chapter_9: [
-    {
-      link: "/",
-      text: "Chapter 9 Applications of Integration Exercise 9.1",
-    },
-    {
-      link: "/",
-      text: "Chapter 9 Applications of Integration Exercise 9.2",
-    },
-    {
-      link: "/",
-      text: "Chapter 9 Applications of Integration Exercise 9.3",
-    },
-    {
-      link: "/",
-      text: "Chapter 9 Applications of Integration Exercise 9.4",
-    },
-    {
-      link: "/",
-      text: "Chapter 9 Applications of Integration Exercise 9.5",
-    },
-    {
-      link: "/",
-      text: "Chapter 9 Applications of Integration Exercise 9.6",
-    },
-    {
-      link: "/",
-      text: "Chapter 9 Applications of Integration Exercise 9.7",
-    },
-    {
-      link: "/",
-      text: "Chapter 9 Applications of Integration Exercise 9.8",
-    },
-    {
-      link: "/",
-      text: "Chapter 9 Applications of Integration Exercise 9.9",
-    },
-    {
-      link: "/",
-      text: "Chapter 9 Applications of Integration Exercise 9.10",
-    },
-  ],
-  chapter_10: [
-    {
-      link: "/",
-      text: "Chapter 10 Ordinary Differential Equations Exercise 10.1",
-    },
-    {
-      link: "/",
-      text: "Chapter 10 Ordinary Differential Equations Exercise 10.2",
-    },
-    {
-      link: "/",
-      text: "Chapter 10 Ordinary Differential Equations Exercise 10.3",
-    },
-    {
-      link: "/",
-      text: "Chapter 10 Ordinary Differential Equations Exercise 10.4",
-    },
-    {
-      link: "/",
-      text: "Chapter 10 Ordinary Differential Equations Exercise 10.5",
-    },
-    {
-      link: "/",
-      text: "Chapter 10 Ordinary Differential Equations Exercise 10.6",
-    },
-    {
-      link: "/",
-      text: "Chapter 10 Ordinary Differential Equations Exercise 10.7",
-    },
-    {
-      link: "/",
-      text: "Chapter 10 Ordinary Differential Equations Exercise 10.8",
-    },
-    {
-      link: "/",
-      text: "Chapter 10 Ordinary Differential Equations Exercise 10.9",
-    },
-  ],
-  chapter_11: [
-    {
-      link: "/",
-      text: "Chapter 11 Probability Distributions Exercise 11.1",
-    },
-    {
-      link: "/",
-      text: "Chapter 11 Probability Distributions Exercise 11.2",
-    },
-    {
-      link: "/",
-      text: "Chapter 11 Probability Distributions Exercise 11.3",
-    },
-    {
-      link: "/",
-      text: "Chapter 11 Probability Distributions Exercise 11.4",
-    },
-    {
-      link: "/",
-      text: "Chapter 11 Probability Distributions Exercise 11.5",
-    },
-    {
-      link: "/",
-      text: "Chapter 11 Probability Distributions Exercise 11.6",
-    },
-  ],
-  chapter_12: [
-    {
-      link: "/",
-      text: "Chapter 12 Discrete Mathematics Exercise 12.1",
-    },
-    {
-      link: "/",
-      text: "Chapter 12 Discrete Mathematics Exercise 12.2",
-    },
-    {
-      link: "/",
-      text: "Chapter 12 Discrete Mathematics Exercise 12.3",
-    },
-  ],
+  chapter_1: {
+    name: "Chapter 1 Relations and Functions",
+    exercises: [
+      { ExerciseID: 1, ExerciseName: "Exercise 1.1" },
+      { ExerciseID: 1, ExerciseName: "Exercise 1.2" },
+      { ExerciseID: 1, ExerciseName: "Exercise 1.3" },
+      { ExerciseID: 1, ExerciseName: "Exercise 1.4" },
+      { ExerciseID: 1, ExerciseName: "Exercise 1.5" },
+      { ExerciseID: 1, ExerciseName: "Exercise 1.6" },
+    ],
+  },
+  chapter_2: {
+    name: "Chapter 2 Numbers and Sequences",
+    exercises: [
+      { ExerciseID: 1, ExerciseName: "Exercise 2.1" },
+      { ExerciseID: 1, ExerciseName: "Exercise 2.2" },
+      { ExerciseID: 1, ExerciseName: "Exercise 2.3" },
+      { ExerciseID: 1, ExerciseName: "Exercise 2.4" },
+      { ExerciseID: 1, ExerciseName: "Exercise 2.5" },
+      { ExerciseID: 1, ExerciseName: "Exercise 2.6" },
+      { ExerciseID: 1, ExerciseName: "Exercise 2.7" },
+      { ExerciseID: 1, ExerciseName: "Exercise 2.8" },
+      { ExerciseID: 1, ExerciseName: "Exercise 2.9" },
+      { ExerciseID: 1, ExerciseName: "Exercise 2.10" },
+    ],
+  },
+  chapter_3: {
+    name: "Chapter 3 Trigonometry",
+    exercises: [
+      { ExerciseID: 1, ExerciseName: "Exercise 3.1" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.2" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.3" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.4" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.5" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.6" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.7" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.8" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.9" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.10" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.11" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.12" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.13" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.14" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.15" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.16" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.17" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.18" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.19" },
+      { ExerciseID: 1, ExerciseName: "Exercise 3.20" },
+    ],
+  },
+  chapter_4: {
+    name: "Chapter 4 Geometry",
+    exercises: [
+      { ExerciseID: 1, ExerciseName: "Exercise 4.1" },
+      { ExerciseID: 1, ExerciseName: "Exercise 4.2" },
+      { ExerciseID: 1, ExerciseName: "Exercise 4.3" },
+      { ExerciseID: 1, ExerciseName: "Exercise 4.4" },
+      { ExerciseID: 1, ExerciseName: "Exercise 4.5" },
+    ],
+  },
+  chapter_5: {
+    name: "Chapter 5 Coordinate Geometry",
+    exercises: [
+      { ExerciseID: 1, ExerciseName: "Exercise 5.1" },
+      { ExerciseID: 1, ExerciseName: "Exercise 5.2" },
+      { ExerciseID: 1, ExerciseName: "Exercise 5.3" },
+      { ExerciseID: 1, ExerciseName: "Exercise 5.4" },
+      { ExerciseID: 1, ExerciseName: "Exercise 5.5" },
+    ],
+  },
+  chapter_6: {
+    name: "Chapter 6 Trigonometry",
+    exercises: [
+      { ExerciseID: 1, ExerciseName: "Exercise 6.1" },
+      { ExerciseID: 1, ExerciseName: "Exercise 6.2" },
+      { ExerciseID: 1, ExerciseName: "Exercise 6.3" },
+      { ExerciseID: 1, ExerciseName: "Exercise 6.4" },
+      { ExerciseID: 1, ExerciseName: "Exercise 6.5" },
+    ],
+  },
+  chapter_7: {
+    name: "Chapter 7 Mensuration",
+    exercises: [
+      { ExerciseID: 1, ExerciseName: "Exercise 7.1" },
+      { ExerciseID: 1, ExerciseName: "Exercise 7.2" },
+      { ExerciseID: 1, ExerciseName: "Exercise 7.3" },
+      { ExerciseID: 1, ExerciseName: "Exercise 7.4" },
+      { ExerciseID: 1, ExerciseName: "Exercise 7.5" },
+    ],
+  },
+  chapter_8: {
+    name: "Chapter 8 Statistics and Probability",
+    exercises: [
+      { ExerciseID: 1, ExerciseName: "Exercise 8.1" },
+      { ExerciseID: 1, ExerciseName: "Exercise 8.2" },
+      { ExerciseID: 1, ExerciseName: "Exercise 8.3" },
+      { ExerciseID: 1, ExerciseName: "Exercise 8.4" },
+      { ExerciseID: 1, ExerciseName: "Exercise 8.5" },
+    ],
+  },
 };
