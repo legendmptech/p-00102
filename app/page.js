@@ -22,7 +22,7 @@ export default function Home() {
               At Alphaa Math, we are dedicated to helping students excel in
               mathematics. Our platform is tailored specifically for the Tamil
               Nadu State Board and CBSE Maths syllabi, providing comprehensive
-              solutions and resources for all your math needs. Whether you're
+              solutions and resources for all your math needs. Whether you{"'"}re
               struggling with complex problems or just looking to sharpen your
               skills, Alphaa Math is here to guide you every step of the way.
             </p>

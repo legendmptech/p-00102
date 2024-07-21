@@ -5,7 +5,7 @@ export async function mysqlQuery({ query, values = [] }) {
     host: "localhost",
     database: "alphaa_math",
     user: "root",
-    password: "root123",
+    password: "",
   });
 
   try {
@@ -74,7 +74,7 @@ export async function deleteProblemById(id) {
   }
 }
 export async function getAllClasses() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/class`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/classe`, {
     next: {
       revalidate: 3600,
     },
