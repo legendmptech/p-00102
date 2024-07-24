@@ -185,7 +185,9 @@ function Page(props) {
                 toastFunction(classid);
 
                 const fetchSubjects = async () => {
-                  const result = await getAllSubjectsByClassId(classid).catch(()=>toastFunction("Couldn't fetch subjects"));
+                  const result = await getAllSubjectsByClassId(classid).catch(
+                    () => toastFunction("Couldn't fetch subjects")
+                  );
                   console.log("Hello", result);
                   setSubjects(result);
                 };
@@ -211,7 +213,13 @@ function Page(props) {
                 toastFunction(subjectid);
 
                 const fetchChapters = async () => {
-                  const result = await getAllChaptersBySubjectId(subjectid);
+                  const result = await getAllChaptersBySubjectId(subjectid)
+                    .then(() => {
+                      toastFunction("Subjects retrieved successfully");
+                    })
+                    .catch((err) => {
+                      toastFunction("Couldn't retrieve Subjects");
+                    });
                   console.log("chapters", result);
                   setChapters(result);
                 };
@@ -239,7 +247,13 @@ function Page(props) {
               toastFunction(exerciseid);
 
               const fetchExercises = async () => {
-                const result = await getAllExercisesByChapterId(exerciseid);
+                const result = await getAllExercisesByChapterId(exerciseid)
+                .then(() => {
+                  toastFunction("Exercises retrieved successfully");
+                })
+                .catch((err) => {
+                  toastFunction("Couldn't retrieve exercises");
+                });
                 console.log("exercises", result);
                 setExercises(result);
               };
