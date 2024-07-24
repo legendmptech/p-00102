@@ -2,8 +2,14 @@ import Image from "next/image";
 import Logo from "./components/Logo";
 import WhatsappBtn from "./components/Buttons/WhatsappBtn";
 import YoutubeBtn from "./components/Buttons/YoutubeBtn";
+import Link from "next/link";
 
 export default function Home() {
+  const classes = [
+    { name: "Class 12", link: "/12th-standard" },
+    { name: "Class 11", link: "/11th-standard" },
+    { name: "Class 10", link: "/10th-standard" },
+  ];
   return (
     <main className="min-h-screen flex flex-col w-full items-center">
       <div className="hero max-w-3xl align-middle mt-28">
@@ -22,9 +28,10 @@ export default function Home() {
               At Alphaa Math, we are dedicated to helping students excel in
               mathematics. Our platform is tailored specifically for the Tamil
               Nadu State Board and CBSE Maths syllabi, providing comprehensive
-              solutions and resources for all your math needs. Whether you{"'"}re
-              struggling with complex problems or just looking to sharpen your
-              skills, Alphaa Math is here to guide you every step of the way.
+              solutions and resources for all your math needs. Whether you{"'"}
+              re struggling with complex problems or just looking to sharpen
+              your skills, Alphaa Math is here to guide you every step of the
+              way.
             </p>
             <p>
               Explore our extensive library of solved problems, detailed
@@ -56,7 +63,20 @@ export default function Home() {
         </div>
         <div className="diff-resizer"></div>
       </div>
-      <div className="flex flex-col px-5 md:flex-row gap-3 justify-center items-center m-5">
+      <h1 className="mb-5">Choose your Class</h1>
+      <div className="w-full flex flex-col md:flex-row gap-5 px-10 max-w-4xl">
+        {classes?.map((item, i) => (
+          <Link href={item?.link} className="link link-hover w-full md:w-1/3 " key={i}>
+            <div
+              key={i}
+              className="w-full border-2 border-gray-800 rounded-md bg-gray-900 h-40 flex justify-center items-center"
+            >
+              <h2 className="text-white">{item?.name}</h2>
+            </div>
+          </Link>
+        ))}
+      </div>
+      <div className="flex flex-col px-5 md:flex-row gap-3 justify-center items-center m-5 my-20">
         <h1>Alphaa Network</h1>
         <WhatsappBtn />
         <YoutubeBtn />

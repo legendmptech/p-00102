@@ -37,7 +37,7 @@ export async function postNewProblem(data) {
 }
 export async function updateProblemById(data) {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/problem`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/api/problem`, {
       method: "PUT",
       body: JSON.stringify(data),
       headers: {
@@ -155,14 +155,11 @@ export async function getAllProblemsByExerciseId(exerciseid) {
   }
 }
 export async function getProblemById(id) {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_URL}/api/problem?id=${id}`,
-    {
-      next: {
-        revalidate: 0,
-      },
-    }
-  );
+  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/problem?id=${id}`, {
+    next: {
+      revalidate: 0,
+    },
+  });
   const data = await res.json();
 
   if (data.statusText == "SUCCESS") {

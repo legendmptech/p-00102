@@ -35,7 +35,9 @@ function AdminPanelComp(props) {
 
   useEffect(() => {
     const fetchClasses = async () => {
-      const result = await getAllClasses();
+      const result = await getAllClasses().catch((err) =>
+        toastFunction("Couldn't get all classes")
+      );
       console.log("Hello", result);
       setClasses(result);
     };
@@ -143,9 +145,13 @@ function AdminPanelComp(props) {
     }
   };
   return (
-    <main className="min-h-screen mt-20 h-full flex justify-center items-center">
+    <main
+      className={`min-h-screen mt-28 h-full flex justify-center ${
+        authenticated ? "items-center" : ""
+      }`}
+    >
       {authenticated !== true ? (
-        <main className="flex flex-col justify-center items-center gap-3 h-full max-h-screen">
+        <main className="flex flex-col md:justify-center md:items-center gap-3 md:h-full md:max-h-screen">
           <p id="admintext">ADMIN LOGIN</p>
           <form action="post" onSubmit={loginBtnClick}>
             <input

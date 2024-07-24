@@ -21,25 +21,25 @@ function Footer(props) {
       </aside>
       <nav>
         <h6 className="footer-title">TN STATE BOARD MATHS</h6>
-        <Link className="link link-hover" href={"#"}>
+        <Link className="link link-hover" href={"/12th-standard"}>
           12th Standard
         </Link>
-        <Link className="link link-hover" href={"#"}>
+        <Link className="link link-hover" href={"/11th-standard"}>
           11th Standard
         </Link>
-        <Link className="link link-hover" href={"#"}>
+        <Link className="link link-hover" href={"/10th-standard"}>
           10th Standard
         </Link>
       </nav>
       <nav>
         <h6 className="footer-title">CBSE BOARD MATHS</h6>
-        <Link className="link link-hover" href={"#"}>
+        <Link className="link link-hover" href={"/12th-standard"}>
           12th Standard
         </Link>
-        <Link className="link link-hover" href={"#"}>
+        <Link className="link link-hover" href={"/11th-standard"}>
           11th Standard
         </Link>
-        <Link className="link link-hover" href={"#"}>
+        <Link className="link link-hover" href={"/10th-standard"}>
           10th Standard
         </Link>
       </nav>
