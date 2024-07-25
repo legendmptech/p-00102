@@ -170,11 +170,11 @@ function AdminPanelComp({ classes }) {
                 toastFunction(classid);
 
                 const fetchSubjects = async () => {
-                  const result = await getAllSubjectsByClassId(classid).catch(
-                    () => toastFunction("Couldn't fetch subjects")
-                  );
-                  console.log("Hello", result);
-                  setSubjects(result);
+                  const result = await getAllSubjectsByClassId(classid)
+                    .then((data) => {
+                      setSubjects(data);
+                    })
+                    .catch(() => toastFunction("Couldn't fetch subjects"));
                 };
                 await fetchSubjects();
               }}
@@ -199,14 +199,13 @@ function AdminPanelComp({ classes }) {
 
                 const fetchChapters = async () => {
                   const result = await getAllChaptersBySubjectId(subjectid)
-                    .then(() => {
-                      toastFunction("Subjects retrieved successfully");
+                    .then((data) => {
+                      toastFunction("Chapters retrieved successfully");
+                      setChapters(data);
                     })
                     .catch((err) => {
-                      toastFunction("Couldn't retrieve Subjects");
+                      toastFunction("Couldn't retrieve Chapters");
                     });
-                  console.log("chapters", result);
-                  setChapters(result);
                 };
 
                 await fetchChapters();
@@ -233,14 +232,13 @@ function AdminPanelComp({ classes }) {
 
               const fetchExercises = async () => {
                 const result = await getAllExercisesByChapterId(exerciseid)
-                  .then(() => {
+                  .then((data) => {
                     toastFunction("Exercises retrieved successfully");
+                    setExercises(data);
                   })
                   .catch((err) => {
                     toastFunction("Couldn't retrieve exercises");
                   });
-                console.log("exercises", result);
-                setExercises(result);
               };
 
               await fetchExercises();

@@ -2,10 +2,10 @@ import mysql from "mysql2/promise";
 
 export async function mysqlQuery({ query, values = [] }) {
   const connection = await mysql.createConnection({
-    host: "localhost",
-    database: "alphaa_math",
-    user: "root",
-    password: "",
+    host: process.env.NEXT_PUBLIC_HOST,
+    database: process.env.NEXT_PUBLIC_DB_NAME,
+    user: process.env.NEXT_PUBLIC_USER,
+    password: process.env.NEXT_PUBLIC_PASSWORD, 
   });
 
   try {
@@ -14,7 +14,6 @@ export async function mysqlQuery({ query, values = [] }) {
     return results;
   } catch (error) {
     throw Error(error.message);
-    return { error };
   }
 }
 export async function postNewProblem(data) {
@@ -112,7 +111,7 @@ export async function getAllChaptersBySubjectId(subjectid) {
     }
   );
   const chapters = await res.json();
-  if (chapters.statusText === "SUCCESS") {
+  if (chapters?.statusText == "SUCCESS") {
     return chapters?.chapters;
   } else {
     return [];
