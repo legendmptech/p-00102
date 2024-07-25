@@ -6,7 +6,6 @@ import Latex from "react-latex-next";
 import {
   deleteProblemById,
   getAllChaptersBySubjectId,
-  getAllClasses,
   getAllExercisesByChapterId,
   getAllProblemsByExerciseId,
   getAllSubjectsByClassId,
@@ -16,15 +15,13 @@ import {
 } from "../lib/db";
 import LatexToolBar from "../components/Latex/LatexToolBar";
 
-function AdminPanelComp(props) {
+function AdminPanelComp({ classes }) {
   const [authenticated, setAuthenticated] = useState(false);
   const [toastText, setToastText] = useState("");
   const [actionState, setActionState] = useState("");
   const [problemText, setProblemText] = useState("");
 
   // DATABASE USED STATES
-
-  const [classes, setClasses] = useState([]);
   const [subjects, setSubjects] = useState([]);
   const [chapters, setChapters] = useState([]);
   const [exercises, setExercises] = useState([]);
@@ -32,18 +29,6 @@ function AdminPanelComp(props) {
   const [screenLoading, setScreenLoading] = useState(false);
   // UI USED STATES
   const [focusedTextInput, setFocusedTextInput] = useState("qnTextInput");
-
-  useEffect(() => {
-    const fetchClasses = async () => {
-      const result = await getAllClasses().catch((err) =>
-        toastFunction("Couldn't get all classes")
-      );
-      console.log("Hello", result);
-      setClasses(result);
-    };
-
-    fetchClasses();
-  }, []);
 
   const loginBtnClick = (e) => {
     e.preventDefault();
@@ -150,7 +135,7 @@ function AdminPanelComp(props) {
         authenticated ? "items-center" : ""
       }`}
     >
-      {authenticated !== true ? (
+      {authenticated == true ? (
         <main className="flex flex-col md:justify-center md:items-center gap-3 md:h-full md:max-h-screen">
           <p id="admintext">ADMIN LOGIN</p>
           <form action="post" onSubmit={loginBtnClick}>
@@ -185,7 +170,9 @@ function AdminPanelComp(props) {
                 toastFunction(classid);
 
                 const fetchSubjects = async () => {
-                  const result = await getAllSubjectsByClassId(classid);
+                  const result = await getAllSubjectsByClassId(classid).catch(
+                    () => toastFunction("Couldn't fetch subjects")
+                  );
                   console.log("Hello", result);
                   setSubjects(result);
                 };
@@ -211,7 +198,13 @@ function AdminPanelComp(props) {
                 toastFunction(subjectid);
 
                 const fetchChapters = async () => {
-                  const result = await getAllChaptersBySubjectId(subjectid);
+                  const result = await getAllChaptersBySubjectId(subjectid)
+                    .then(() => {
+                      toastFunction("Subjects retrieved successfully");
+                    })
+                    .catch((err) => {
+                      toastFunction("Couldn't retrieve Subjects");
+                    });
                   console.log("chapters", result);
                   setChapters(result);
                 };
@@ -239,7 +232,13 @@ function AdminPanelComp(props) {
               toastFunction(exerciseid);
 
               const fetchExercises = async () => {
-                const result = await getAllExercisesByChapterId(exerciseid);
+                const result = await getAllExercisesByChapterId(exerciseid)
+                  .then(() => {
+                    toastFunction("Exercises retrieved successfully");
+                  })
+                  .catch((err) => {
+                    toastFunction("Couldn't retrieve exercises");
+                  });
                 console.log("exercises", result);
                 setExercises(result);
               };
