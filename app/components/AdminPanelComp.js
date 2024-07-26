@@ -6,6 +6,7 @@ import Latex from "react-latex-next";
 import {
   deleteProblemById,
   getAllChaptersBySubjectId,
+  getAllClasses,
   getAllExercisesByChapterId,
   getAllProblemsByExerciseId,
   getAllSubjectsByClassId,
@@ -15,7 +16,7 @@ import {
 } from "../lib/db";
 import LatexToolBar from "../components/Latex/LatexToolBar";
 
-function AdminPanelComp({ classes }) {
+function AdminPanelComp() {
   const [authenticated, setAuthenticated] = useState(false);
   const [toastText, setToastText] = useState("");
   const [actionState, setActionState] = useState("");
@@ -24,6 +25,7 @@ function AdminPanelComp({ classes }) {
   // DATABASE USED STATES
   const [subjects, setSubjects] = useState([]);
   const [chapters, setChapters] = useState([]);
+  const [classes, setClasses] = useState([]);
   const [exercises, setExercises] = useState([]);
   const [problems, setProblems] = useState([]);
   const [screenLoading, setScreenLoading] = useState(false);
@@ -85,7 +87,7 @@ function AdminPanelComp({ classes }) {
           QuestionTextInput.value = ``;
           AnswerTextInput.value = ``;
           toastFunction(
-            `New Problem is Create & Added in the Exercise of ID ${ExerciseDropDown?.value}`
+            `REFRESH PAGE : New Problem is Create & Added in the Exercise of ID ${ExerciseDropDown?.value}`
           );
           setScreenLoading(false);
         })
@@ -104,7 +106,7 @@ function AdminPanelComp({ classes }) {
         .then((data) => {
           QuestionTextInput.value = ``;
           AnswerTextInput.value = ``;
-          toastFunction(`Updated problem of ID => ${ProblemDropDown?.value}`);
+          toastFunction(`REFRESH PAGE : Updated problem of ID => ${ProblemDropDown?.value}`);
           setScreenLoading(false);
         })
         .catch((err) => {
@@ -119,7 +121,7 @@ function AdminPanelComp({ classes }) {
       await deleteProblemById(ProblemDropDown?.value)
         .then((data) => {
           toastFunction(
-            `Problem of ID => ${ProblemDropDown?.value} is Deleted`
+            `REFRESH PAGE : Problem of ID => ${ProblemDropDown?.value} is Deleted`
           );
           setScreenLoading(false);
         })
@@ -129,6 +131,19 @@ function AdminPanelComp({ classes }) {
         });
     }
   };
+  useEffect(() => {
+    const fetchClasses = async () => {
+      await getAllClasses()
+        .then((classes) => {
+          setClasses(classes);
+        })
+        .catch((err) => {
+          throw new Error(err);
+        });
+    };
+
+    fetchClasses();
+  }, []);
   return (
     <main
       className={`min-h-screen mt-28 h-full flex justify-center ${
@@ -167,7 +182,6 @@ function AdminPanelComp({ classes }) {
               defaultValue={0}
               onChange={async () => {
                 const classid = document.getElementById("classDropDown")?.value;
-                toastFunction(classid);
 
                 const fetchSubjects = async () => {
                   const result = await getAllSubjectsByClassId(classid)
@@ -195,7 +209,6 @@ function AdminPanelComp({ classes }) {
               onChange={async () => {
                 const subjectid =
                   document.getElementById("subjectDropDown")?.value;
-                toastFunction(subjectid);
 
                 const fetchChapters = async () => {
                   const result = await getAllChaptersBySubjectId(subjectid)
@@ -228,7 +241,6 @@ function AdminPanelComp({ classes }) {
             onChange={async () => {
               const exerciseid =
                 document.getElementById("chapterDropDown")?.value;
-              toastFunction(exerciseid);
 
               const fetchExercises = async () => {
                 const result = await getAllExercisesByChapterId(exerciseid)
@@ -316,7 +328,6 @@ function AdminPanelComp({ classes }) {
                     onChange={async () => {
                       const problemid =
                         document.getElementById("problemDropDown")?.value;
-                      toastFunction(problemid);
 
                       const fetchProblem = async () => {
                         const result = await getProblemById(problemid);
