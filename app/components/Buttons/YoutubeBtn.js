@@ -4,7 +4,11 @@ import { FaYoutube } from "react-icons/fa";
 
 function YoutubeBtn(props) {
   return (
-    <Link className="link link-hover" href={"/"}>
+    <Link
+      className="link link-hover"
+      href={"https://youtube.com/@alphaamath?si=xLv5WRI-eUO_TQ4i"}
+      target="_blank"
+    >
       <div
         className="flex flex-row gap-2 items-center p-3 rounded-md"
         style={{ backgroundColor: "#212121" }}

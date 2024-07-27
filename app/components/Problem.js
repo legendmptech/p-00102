@@ -1,11 +1,14 @@
+import { LatexText } from "./LatexText";
 function Problem(props) {
   return (
     <div className="">
-      <div className="divider">
-        <p>{props?.QuestionNumber}</p>
-      </div>
-      <p className="font-medium">{props?.QuestionText}</p>
-      <p>{props?.AnswerText}</p>
+      <hr className="my-5"/>
+      <p className="font-medium mb-5">
+        <LatexText text={props?.QuestionText} />
+      </p>
+      <p>
+        <LatexText text={props?.AnswerText} />
+      </p>
     </div>
   );
 }

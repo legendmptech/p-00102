@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Logo from "./components/Logo";
-import WhatsappBtn from "./components/Buttons/WhatsappBtn";
-import YoutubeBtn from "./components/Buttons/YoutubeBtn";
 import Link from "next/link";
+import SocialNetworkComp from "./components/SocialNetworkComp";
 
 export default function Home() {
   const classes = [
@@ -41,9 +40,12 @@ export default function Home() {
               a new way of learning at Alphaa Math!
             </p>
             <div className="flex justify-center">
-              <button className="btn btn-neutral mt-5 text-center hover:bg-gray">
+              <Link
+                className="btn btn-neutral mt-5 text-center hover:bg-gray"
+                href={"#chooseClassId"}
+              >
                 Get Started
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -63,23 +65,24 @@ export default function Home() {
         </div>
         <div className="diff-resizer"></div>
       </div>
-      <h1 className="mb-5">Choose your Class</h1>
+      <h1 className="mb-5" id="chooseClassId">
+        Choose your Class
+      </h1>
       <div className="w-full flex flex-col md:flex-row gap-5 px-10 max-w-4xl">
         {classes?.map((item, i) => (
-          <Link href={item?.link} className="link link-hover w-full md:w-1/3 " key={i}>
+          <Link
+            href={item?.link}
+            className="link link-hover w-full md:w-1/3 "
+            key={i}
+          >
             <div
               key={i}
-              className="w-full border-2 border-gray-800 rounded-md bg-gray-900 h-40 flex justify-center items-center"
+              className="w-full border-2 border-gray-800 rounded-3xl bg-gradient-to-r from-gray-900 to-gray-600 h-40 flex justify-center items-center hover:drop-shadow-2xl hover:"
             >
               <h2 className="text-white">{item?.name}</h2>
             </div>
           </Link>
         ))}
-      </div>
-      <div className="flex flex-col px-5 md:flex-row gap-3 justify-center items-center m-5 my-20">
-        <h1>Alphaa Network</h1>
-        <WhatsappBtn />
-        <YoutubeBtn />
       </div>
     </main>
   );

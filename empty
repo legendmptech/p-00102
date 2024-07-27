@@ -1,0 +1,4 @@
+-- 10th Standard Chapters
+INSERT INTO Chapters (ChapterName, SubjectID)VALUES ('Chapter 1 Relations and Functions',3),('Chapter 2 Numbers and Sequences',3),('Chapter 3 Trigonometry',3),('Chapter 4 Geometry',3),('Chapter 5 Coordinate Geometry',3),('Chapter 6 Trigonometry',3),('Chapter 7 Mensuration',3),('Chapter 8 Statistics and Probability',3);
+
+--EXERCISES

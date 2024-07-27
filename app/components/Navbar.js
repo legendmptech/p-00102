@@ -11,7 +11,9 @@ function Navbar(props) {
         <div className="navbar-start drawer flex">
           {/* Sidebar content here */}
           <Sidebar />
-          <Logo />
+          <Link href={process.env.NEXT_PUBLIC_URL}>
+            <Logo />
+          </Link>
         </div>
         <div className="navbar-center hidden md:flex">
           <ul className="menu menu-horizontal px-1">

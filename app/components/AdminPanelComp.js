@@ -111,6 +111,7 @@ function AdminPanelComp() {
         })
         .catch((err) => {
           setScreenLoading(false);
+          console.log(err);
           toastFunction("Couldn't Update the problem");
         });
     }

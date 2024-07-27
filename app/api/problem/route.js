@@ -32,7 +32,6 @@ export async function POST(req, res) {
       query: `INSERT INTO Problems (QuestionText,AnswerText,ExerciseID) VALUES (?,?,?);`,
       values: [QuestionText, AnswerText, ExerciseID],
     });
-    console.log(results.insertId);
     return NextResponse.json(
       {
         message: "Math Problem Created...",
@@ -52,7 +51,6 @@ export async function PUT(req, res) {
       query: `UPDATE Problems SET  QuestionText = ?,AnswerText = ? WHERE ProblemID = ?;`,
       values: [QuestionText, AnswerText, ProblemID],
     });
-    console.log(results);
     return NextResponse.json(
       { message: "Updated Problem...", ProblemID },
       { status: 200 }

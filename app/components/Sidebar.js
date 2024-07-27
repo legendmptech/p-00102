@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import React from "react";
+import Logo from "./Logo";
 
 function Sidebar(props) {
   const handleSidebarClose = () => {
@@ -37,6 +38,13 @@ function Sidebar(props) {
           className="drawer-overlay"
         ></label>
         <ul className="menu p-3 w-80 min-h-full bg-base-100 text-base-content pt-20">
+          <Link
+            href={process.env.NEXT_PUBLIC_URL}
+            className="mb-5"
+            onClick={handleSidebarClose}
+          >
+            <Logo />
+          </Link>
           <Link
             href={"/12th-standard"}
             className="link link-hover bg-neutral text-base-200 p-2"
