@@ -17,37 +17,37 @@ function LatexToolBar({ focusedTextInput }) {
       <button
         className="btn tooltip join-item border-2 border-gray-500"
         onClick={() => toolBarFunction("<br/>")}
-        data-tip="Add a line break <br/>"
+        data-tip="New Line"
       >
-        add line
+        line
       </button>
       <button
         className="btn tooltip join-item border-2 border-gray-500"
         onClick={() => toolBarFunction("$$", -1)}
-        data-tip="Add latex code in the editor $$"
+        data-tip="Latex"
       >
-        latex
+        $$
       </button>
       <button
         className="btn tooltip join-item border-2 border-gray-500"
         onClick={() => toolBarFunction("<b></b>", -4)}
-        data-tip="Bold <b></b>"
+        data-tip="Bold"
       >
         B
       </button>
       <button
         className="btn tooltip join-item border-2 border-gray-500"
         onClick={() => toolBarFunction("<i></i>", -4)}
-        data-tip="Italic <i></i>"
+        data-tip="Italic"
       >
         <i>I</i>
       </button>
       <button
         className="btn tooltip join-item border-2 border-gray-500"
         onClick={() => toolBarFunction("<hr/>")}
-        data-tip="add a divider which divides the text |"
+        data-tip="divider"
       >
-        divider
+        {"--"}
       </button>
     </div>
   );

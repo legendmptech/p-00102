@@ -74,6 +74,8 @@ function AdminPanelComp() {
     const AnswerTextInput = document.getElementById("ansTextInput");
     const ExerciseDropDown = document.getElementById("exerciseDropDown");
     const ProblemDropDown = document.getElementById("problemDropDown");
+    const URlTextInput = document.getElementById("urlTextInput");
+    const URLAddressInput = document.getElementById("urlAddressInput");
 
     setScreenLoading(true);
     if (actionState === "ADD") {
@@ -82,10 +84,15 @@ function AdminPanelComp() {
         QuestionText: QuestionTextInput?.value,
         AnswerText: AnswerTextInput?.value,
         ExerciseID: ExerciseDropDown?.value,
+        URL_Text: URlTextInput?.value,
+        URL_Address: URLAddressInput?.value,
       })
         .then((data) => {
           QuestionTextInput.value = ``;
           AnswerTextInput.value = ``;
+          URlTextInput.value = ``;
+          URLAddressInput.value = ``;
+
           toastFunction(
             `REFRESH PAGE : New Problem is Create & Added in the Exercise of ID ${ExerciseDropDown?.value}`
           );
@@ -102,11 +109,18 @@ function AdminPanelComp() {
         QuestionText: QuestionTextInput?.value,
         AnswerText: AnswerTextInput?.value,
         ProblemID: ProblemDropDown?.value,
+        URL_Text: URlTextInput?.value,
+        URL_Address: URLAddressInput?.value,
       })
         .then((data) => {
           QuestionTextInput.value = ``;
           AnswerTextInput.value = ``;
-          toastFunction(`REFRESH PAGE : Updated problem of ID => ${ProblemDropDown?.value}`);
+          URlTextInput.value = ``;
+          URLAddressInput.value = ``;
+
+          toastFunction(
+            `REFRESH PAGE : Updated problem of ID => ${ProblemDropDown?.value}`
+          );
           setScreenLoading(false);
         })
         .catch((err) => {
@@ -336,11 +350,18 @@ function AdminPanelComp() {
                           document.getElementById("qnTextInput");
                         const ansTextInput =
                           document.getElementById("ansTextInput");
+                        const urlTextInput =
+                          document.getElementById("urlTextInput");
+                        const urlAddressInput =
+                          document.getElementById("urlAddressInput");
+
                         if (actionState == "DELETE") {
                           return;
                         }
                         qnTextInput.value = result?.QuestionText;
                         ansTextInput.value = result?.AnswerText;
+                        urlTextInput.value = result?.URL_Text;
+                        urlAddressInput.value = result?.URL_Address;
                       };
 
                       await fetchProblem();
@@ -372,6 +393,25 @@ function AdminPanelComp() {
                       onFocus={() => setFocusedTextInput("ansTextInput")}
                     ></textarea>
                   </>
+                )}
+                {actionState != "DELETE" && (
+                  <div className="flex gap-2 w-full justify-stretch">
+                    <textarea
+                      placeholder="URL Placeholder"
+                      maxLength={100}
+                      id="urlTextInput"
+                      type="text"
+                      className="textarea textarea-bordered"
+                      style={{ width: "50%" }}
+                    ></textarea>
+                    <textarea
+                      placeholder="Enter URL"
+                      maxLength={255}
+                      id="urlAddressInput"
+                      className="textarea textarea-bordered max-w-sm"
+                      style={{ width: "50%" }}
+                    ></textarea>
+                  </div>
                 )}
                 <button
                   className={`btn btn-primary ${

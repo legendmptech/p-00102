@@ -22,6 +22,11 @@ const nextConfig = {
         hostname: "storage.needpix.com",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "google.com",
+        port: "",
+      },
     ],
   },
 };

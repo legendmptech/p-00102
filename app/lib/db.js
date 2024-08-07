@@ -75,7 +75,7 @@ export async function deleteProblemById(id) {
 export async function getAllClasses() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/classe`, {
     next: {
-      revalidate: 3600,
+      revalidate: 0,
     },
   });
   const classes = await res.json();
@@ -90,7 +90,7 @@ export async function getAllSubjectsByClassId(classId) {
     `${process.env.NEXT_PUBLIC_URL}/api/subject?classid=${classId}`,
     {
       next: {
-        revalidate: 3600,
+        revalidate: 0,
       },
     }
   );
@@ -106,7 +106,7 @@ export async function getAllChaptersBySubjectId(subjectid) {
     `${process.env.NEXT_PUBLIC_URL}/api/chapter?subjectid=${subjectid}`,
     {
       next: {
-        revalidate: 3600,
+        revalidate: 0,
       },
     }
   );
@@ -122,7 +122,7 @@ export async function getAllExercisesByChapterId(chapterid) {
     `${process.env.NEXT_PUBLIC_URL}/api/exercise?chapterid=${chapterid}`,
     {
       next: {
-        revalidate: 3600,
+        revalidate: 0,
       },
     }
   );
@@ -138,7 +138,7 @@ export async function getAllProblemsByExerciseId(exerciseid) {
     `${process.env.NEXT_PUBLIC_URL}/api/problems?ex=${exerciseid}`,
     {
       next: {
-        revalidate: 3600,
+        revalidate: 0,
       },
     }
   );
@@ -158,7 +158,7 @@ export async function getProblemById(id) {
     `${process.env.NEXT_PUBLIC_URL}/api/problem?id=${id}`,
     {
       next: {
-        revalidate: 3600,
+        revalidate: 0,
       },
     }
   );

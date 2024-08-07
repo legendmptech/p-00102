@@ -27,10 +27,11 @@ export async function GET(req, res) {
 }
 export async function POST(req, res) {
   try {
-    const { QuestionText, AnswerText, ExerciseID } = await req.json();
+    const { QuestionText, AnswerText, ExerciseID, URL_Text, URL_Address } =
+      await req.json();
     const results = await mysqlQuery({
-      query: `INSERT INTO Problems (QuestionText,AnswerText,ExerciseID) VALUES (?,?,?);`,
-      values: [QuestionText, AnswerText, ExerciseID],
+      query: `INSERT INTO Problems (QuestionText,AnswerText,ExerciseID,URL_Text,URL_Address) VALUES (?,?,?,?,?);`,
+      values: [QuestionText, AnswerText, ExerciseID, URL_Text, URL_Address],
     });
     return NextResponse.json(
       {
@@ -46,10 +47,11 @@ export async function POST(req, res) {
 }
 export async function PUT(req, res) {
   try {
-    const { QuestionText, AnswerText, ProblemID } = await req.json();
+    const { QuestionText, AnswerText, ProblemID, URL_Text, URL_Address } =
+      await req.json();
     await mysqlQuery({
-      query: `UPDATE Problems SET  QuestionText = ?,AnswerText = ? WHERE ProblemID = ?;`,
-      values: [QuestionText, AnswerText, ProblemID],
+      query: `UPDATE Problems SET  QuestionText = ?,AnswerText = ?,URL_Text = ?, URL_Address = ?  WHERE ProblemID = ?;`,
+      values: [QuestionText, AnswerText, URL_Text, URL_Address, ProblemID],
     });
     return NextResponse.json(
       { message: "Updated Problem...", ProblemID },
